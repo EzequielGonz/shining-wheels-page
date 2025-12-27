@@ -1,0 +1,176 @@
+.footer {
+    padding: 8rem 2rem 4rem;
+    /* More top padding for breathing room */
+    background: transparent;
+    /* Seamless blend */
+    position: relative;
+    /* No border-top to avoid the "cut" */
+}
+
+/* Optional: subtle gradient at the very bottom to anchor the page, 
+   but keeping it mostly transparent for the global bg */
+.footer::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.8) 0%, transparent 100%);
+    pointer-events: none;
+    z-index: -1;
+}
+
+.footer-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 4rem;
+}
+
+.footer-brand {
+    flex: 1;
+    min-width: 300px;
+}
+
+.footer-logo {
+    font-size: 2rem;
+    /* Larger, more impactful */
+    font-weight: 300;
+    /* Lighter weight for elegance */
+    color: #ffffff;
+    margin-bottom: 1.5rem;
+    display: block;
+    letter-spacing: -1px;
+    text-transform: uppercase;
+}
+
+.footer-desc {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 1rem;
+    line-height: 1.8;
+    max-width: 350px;
+    font-weight: 300;
+}
+
+.footer-links {
+    display: flex;
+    gap: 6rem;
+    /* More space between columns */
+    flex-wrap: wrap;
+}
+
+.footer-col h4 {
+    color: #ffffff;
+    font-size: 0.9rem;
+    margin-bottom: 2rem;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    opacity: 0.8;
+}
+
+.footer-col ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-col li {
+    margin-bottom: 1rem;
+}
+
+.footer-col a {
+    color: rgba(255, 255, 255, 0.5);
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: 300;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.footer-col a:hover {
+    color: #ffffff;
+    padding-left: 5px;
+    /* Subtle movement */
+}
+
+.footer-col a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -2px;
+    width: 0;
+    height: 1px;
+    background: var(--primary-red);
+    transition: width 0.3s ease;
+}
+
+.footer-col a:hover::after {
+    width: 100%;
+}
+
+.footer-socials {
+    display: flex;
+    gap: 1.5rem;
+    margin-top: 2.5rem;
+}
+
+.social-icon {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgba(255, 255, 255, 0.7);
+    transition: all 0.4s ease;
+    cursor: pointer;
+    font-size: 0.9rem;
+}
+
+.social-icon:hover {
+    background: var(--primary-red);
+    border-color: var(--primary-red);
+    color: #fff;
+    transform: translateY(-5px) rotate(360deg);
+    /* Playful interaction */
+}
+
+.footer-bottom {
+    max-width: 1400px;
+    margin: 6rem auto 0;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    /* Very subtle separator for copyright */
+    text-align: center;
+    color: rgba(255, 255, 255, 0.2);
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+@media (max-width: 768px) {
+    .footer {
+        padding: 6rem 1.5rem 3rem;
+    }
+
+    .footer-container {
+        flex-direction: column;
+        gap: 3rem;
+    }
+
+    .footer-logo {
+        font-size: 1.8rem;
+    }
+
+    .footer-links {
+        gap: 3rem;
+        width: 100%;
+        justify-content: space-between;
+    }
+}

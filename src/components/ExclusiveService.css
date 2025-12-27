@@ -1,0 +1,87 @@
+.exclusive-service {
+    padding: 10rem 2rem;
+    background: rgba(0, 0, 0, 0.6);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.exclusive-container {
+    max-width: 900px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3rem;
+}
+
+.exclusive-title {
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 300;
+    color: #ffffff;
+    line-height: 1.3;
+    margin-bottom: 1rem;
+}
+
+.exclusive-text {
+    font-size: clamp(1.1rem, 2vw, 1.4rem);
+    line-height: 1.8;
+    color: rgba(255, 255, 255, 0.7);
+    font-weight: 300;
+    max-width: 800px;
+}
+
+.exclusive-highlight {
+    color: var(--primary-red);
+    font-weight: 500;
+}
+
+.response-time-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 2rem;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 50px;
+    color: #ffffff;
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: default;
+    margin-top: 2rem;
+    transition: all 0.3s ease;
+}
+
+.response-time-btn:hover {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+.clock-icon {
+    color: var(--primary-red);
+}
+
+/* Animation */
+.exclusive-service.animated .exclusive-title,
+.exclusive-service.animated .exclusive-text,
+.exclusive-service.animated .response-time-btn {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.exclusive-title,
+.exclusive-text,
+.response-time-btn {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.exclusive-text {
+    transition-delay: 0.2s;
+}
+
+.response-time-btn {
+    transition-delay: 0.4s;
+}
