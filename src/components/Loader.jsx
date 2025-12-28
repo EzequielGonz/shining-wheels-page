@@ -1,35 +1,41 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import './Loader.css';
 
 const Loader = ({ onComplete }) => {
   const [progress, setProgress] = useState(0);
   const [isComplete, setIsComplete] = useState(false);
+  const onCompleteRef = useRef(onComplete);
 
+  // Mantener la referencia actualizada sin disparar efectos
   useEffect(() => {
-    // Simular progreso de carga
-    const interval = setInterval(() => {
-      setProgress((prev) => {
-        if (prev >= 100) {
-          clearInterval(interval);
-          setIsComplete(true);
-          setTimeout(() => {
-            if (onComplete) onComplete();
-          }, 500);
-          return 100;
-        }
-        return prev + 2;
-      });
-    }, 60);
-
-    return () => clearInterval(interval);
+    onCompleteRef.current = onComplete;
   }, [onComplete]);
 
-  if (isComplete) {
-    return null;
-  }
+  useEffect(() => {
+    const DURATION = 3000; // 3 segundos exactos
+    const startTime = Date.now();
+
+    const interval = setInterval(() => {
+      const elapsed = Date.now() - startTime;
+      // Asegurar que el progreso nunca supere 100
+      const newProgress = Math.min((elapsed / DURATION) * 100, 100);
+
+      setProgress(Math.floor(newProgress));
+
+      if (newProgress >= 100) {
+        clearInterval(interval);
+        setIsComplete(true);
+        setTimeout(() => {
+          if (onCompleteRef.current) onCompleteRef.current();
+        }, 500);
+      }
+    }, 16); // ~60fps
+
+    return () => clearInterval(interval);
+  }, []); // Dependencias vacías para ejecutar solo una vez al montar
 
   return (
-    <div className="loader-overlay">
+    <div className={`loader-overlay ${isComplete ? 'fade-out' : ''}`}>
       <div className="loader-container">
         <div className="loader-wheel">
           <img

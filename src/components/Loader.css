@@ -9,7 +9,13 @@
   align-items: center;
   justify-content: center;
   z-index: 9999;
-  animation: fadeOut 0.5s ease-out 0.3s forwards;
+  opacity: 1;
+  transition: opacity 0.5s ease-out, visibility 0.5s ease-out;
+}
+
+.loader-overlay.fade-out {
+  opacity: 0;
+  visibility: hidden;
 }
 
 .loader-container {
@@ -65,16 +71,6 @@
   }
   to {
     transform: rotate(360deg);
-  }
-}
-
-@keyframes fadeOut {
-  from {
-    opacity: 1;
-  }
-  to {
-    opacity: 0;
-    visibility: hidden;
   }
 }
 
