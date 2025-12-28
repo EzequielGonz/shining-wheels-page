@@ -112,3 +112,36 @@
         padding: 2.5rem;
     }
 }
+
+.review-btn-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 4rem;
+}
+
+.review-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 2rem;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 50px;
+    color: #ffffff;
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.review-btn:hover {
+    background: rgba(220, 20, 60, 0.1);
+    border-color: var(--primary-red);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 20px rgba(220, 20, 60, 0.2);
+}
+
+.review-btn svg {
+    color: var(--primary-red);
+}
