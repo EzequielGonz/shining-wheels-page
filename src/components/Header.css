@@ -12,6 +12,16 @@
   transition: all 0.3s ease;
 }
 
+.nv {
+  color: #F3F3F3CC !important;
+  background-color: #0A0A0ACC;
+  border: black;
+  }
+
+.nv-account {
+  color: #F3F3F3CC !important;
+  }
+
 .header.scrolled {
   padding: 1rem 0;
   box-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
@@ -61,7 +71,7 @@
 }
 
 .nav-link {
-  color: rgba(255, 255, 255, 0.8);
+  color: rgba(243, 243, 243, 0.8);
   text-decoration: none;
   font-size: 0.9rem;
   font-weight: 400;
@@ -92,7 +102,7 @@
 }
 
 .nav-link-utility {
-  color: rgba(255, 255, 255, 0.5);
+  color: rgba(184, 184, 184, 0.5);
 }
 
 .cta-button {
@@ -112,7 +122,7 @@
 
 .cta-button:hover {
   background-color: var(--primary-red);
-  color: #ffffff;
+  color: #bbbbbb;
   transform: translateY(-1px);
   box-shadow: 0 5px 20px rgba(220, 20, 60, 0.3);
 }

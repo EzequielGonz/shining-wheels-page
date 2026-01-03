@@ -3,6 +3,8 @@ import './ExclusiveService.css';
 
 const ExclusiveService = () => {
     const [isVisible, setIsVisible] = useState(false);
+    const [showReview, setShowReview] = useState(false);
+    const [reviewText, setReviewText] = useState('');
     const sectionRef = useRef(null);
 
     useEffect(() => {
@@ -55,7 +57,7 @@ const ExclusiveService = () => {
                     <span className="exclusive-highlight"> "Mejor Servicio de Miami"</span>
                 </p>
 
-                <div className="questions-btn">
+                <div className="questions-btn" onClick={() => setShowReview(true)}>
                     <QuestionIcon />
                     <span>¿Tienes Dudas?</span>
                 </div>
@@ -64,6 +66,22 @@ const ExclusiveService = () => {
                     <ClockIcon />
                     <span>Tiempo de respuesta 2 horas</span>
                 </div>
+
+                {showReview && (
+                    <div className="review-box">
+                        <h3 className="review-title">Escribe tu reseña</h3>
+                        <textarea
+                            className="review-textarea"
+                            value={reviewText}
+                            onChange={(e) => setReviewText(e.target.value)}
+                            placeholder="Cuéntanos tu experiencia o tus dudas..."
+                        />
+                        <div className="review-actions">
+                            <button className="review-send-btn">Enviar</button>
+                            <button className="review-cancel-btn" onClick={() => setShowReview(false)}>Cerrar</button>
+                        </div>
+                    </div>
+                )}
             </div>
         </section>
     );

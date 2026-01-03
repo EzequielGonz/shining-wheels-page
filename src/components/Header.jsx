@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
+import { useCart } from '../context/CartContext';
 import Logo from './Logo';
 import './Header.css';
 
 const Header = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const { setIsCartOpen, cartItems } = useCart();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -33,7 +35,10 @@ const Header = () => {
 
         {/* Acciones secundarias derecha */}
         <div className="header-nav header-nav-right">
-          <a href="#account" className="nav-link nav-link-utility">
+          <button className="nav-link nv nav-link-utility cart-trigger cart-trigger-dark" onClick={() => setIsCartOpen(true)}>
+            <span>Cart ({cartItems.length})</span>
+          </button>
+          <a href="#account" className="nav-link nv-account nav-link-utility">
             <span>Account</span>
           </a>
           <button className="cta-button">Book Now</button>
@@ -57,6 +62,9 @@ const Header = () => {
           <a href="#home" className="mobile-nav-link">Home</a>
           <a href="#services" className="mobile-nav-link">Services</a>
           <a href="#setups" className="mobile-nav-link">Setups</a>
+          <button className="mobile-nav-link" onClick={() => { setIsCartOpen(true); setIsMobileMenuOpen(false); }}>
+            Cart ({cartItems.length})
+          </button>
           <a href="#account" className="mobile-nav-link">Account</a>
           <button className="mobile-cta-button">Book Now</button>
         </nav>

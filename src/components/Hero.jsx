@@ -9,29 +9,39 @@ const Hero = () => {
           className="hero-video"
           autoPlay
           muted
-          loop
           playsInline
           preload="auto"
         >
-          <source src="https://ik.imagekit.io/hilcozgig/videohero.mp4" type="video/mp4" />
+          <source src="/1hero-vmake.mp4" type="video/mp4" />
           {/* Fallback si no hay video */}
         </video>
         <div className="hero-video-overlay"></div>
       </div>
       
       <div className="hero-content">
-        <h1 className="hero-title">
-          Premium Car Detailing
-          <span className="hero-subtitle">Miami</span>
-        </h1>
+        <div className="hero-text-wrapper">
+          <h1 className="hero-title">
+            Premium Car Detailing
+          </h1>
+          <h2 className="hero-location">
+            MIAMI
+          </h2>
+        </div>
         
         <div className="hero-buttons">
-          <button className="hero-button hero-button-primary">
-            Book Now
+          <button className="hero-button-solid">
+            Book Appointment
           </button>
-          <button className="hero-button hero-button-secondary">
-            Get a Free Quote
+          <button className="hero-button-outline">
+            View Services
           </button>
+        </div>
+
+        <div className="scroll-indicator">
+          <div className="mouse">
+            <div className="wheel"></div>
+          </div>
+          <div className="arrow"></div>
         </div>
       </div>
     </section>

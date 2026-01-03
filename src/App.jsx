@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { CartProvider } from './context/CartContext';
+import Cart from './components/Cart';
 import Header from './components/Header';
 import Hero from './components/Hero';
 import AlternatingFeatures from './components/AlternatingFeatures';
@@ -20,22 +22,25 @@ function App() {
   };
 
   return (
-    <div className="App">
-      {isLoading && <Loader onComplete={handleLoadComplete} />}
-      <BackgroundAnimation />
-      <Header />
-      <main>
-        <Hero />
-        <AlternatingFeatures />
-        <ServiceLevels />
-        <WhyDifferent />
-        <Testimonials />
-        <ExclusiveService />
-        <Footer />
-      </main>
-      <ScrollToTop />
-      <WhatsAppButton />
-    </div>
+    <CartProvider>
+      <div className="App">
+        {isLoading && <Loader onComplete={handleLoadComplete} />}
+        <BackgroundAnimation />
+        <Header />
+        <Cart />
+        <main>
+          <Hero />
+          <AlternatingFeatures />
+          <ServiceLevels />
+          <WhyDifferent />
+          <Testimonials />
+          <ExclusiveService />
+          <Footer />
+        </main>
+        <ScrollToTop />
+        <WhatsAppButton />
+      </div>
+    </CartProvider>
   );
 }
 

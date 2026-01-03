@@ -12,7 +12,7 @@ const Loader = ({ onComplete }) => {
   }, [onComplete]);
 
   useEffect(() => {
-    const DURATION = 3000; // 3 segundos exactos
+    const DURATION = 1500; // 1.5 segundos
     const startTime = Date.now();
 
     const interval = setInterval(() => {
