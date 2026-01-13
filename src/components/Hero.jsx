@@ -1,10 +1,9 @@
 import React from 'react';
 import './Hero.css';
-import { FaCrown } from 'react-icons/fa';
 
-const Hero = ({ isVip = false }) => {
+const Hero = () => {
   return (
-    <section className={`hero ${isVip ? 'hero-vip' : ''}`} id="home">
+    <section className="hero" id="home">
       <div className="hero-video-container">
         <video
           className="hero-video"
@@ -20,15 +19,9 @@ const Hero = ({ isVip = false }) => {
       </div>
 
       <div className="hero-content">
-        {isVip && (
-          <div className="vip-hero-badge">
-            <FaCrown className="vip-badge-icon" />
-            <span>Miembro VIP Exclusivo</span>
-          </div>
-        )}
         <div className="hero-text-wrapper">
           <h1 className="hero-title">
-            {isVip ? 'VIP Premium Detailing' : 'Premium Car Detailing'}
+            Premium Car Detailing
           </h1>
           <h2 className="hero-location">
             MIAMI
@@ -36,12 +29,12 @@ const Hero = ({ isVip = false }) => {
         </div>
 
         <div className="hero-buttons">
-          <a href="#services" className="hero-button-solid">
-            {isVip ? 'Ver Precios VIP' : 'Book Appointment'}
-          </a>
-          <a href="#add-ons" className="hero-button-outline">
-            {isVip ? 'Servicios Exclusivos' : 'View Services'}
-          </a>
+          <button className="hero-button-solid">
+            Book Appointment
+          </button>
+          <button className="hero-button-outline">
+            View Services
+          </button>
         </div>
 
         <div className="scroll-indicator">
@@ -56,5 +49,6 @@ const Hero = ({ isVip = false }) => {
 };
 
 export default Hero;
+
 
 

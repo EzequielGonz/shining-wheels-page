@@ -1,0 +1,334 @@
+.vip-section {
+    position: relative;
+    padding: 100px 20px;
+    overflow: hidden;
+}
+
+.vip-section-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background:
+        radial-gradient(ellipse at 20% 0%, rgba(212, 175, 55, 0.15) 0%, transparent 50%),
+        radial-gradient(ellipse at 80% 100%, rgba(212, 175, 55, 0.1) 0%, transparent 50%),
+        linear-gradient(180deg, #0a0a0a 0%, #111111 50%, #0a0a0a 100%);
+    z-index: 0;
+}
+
+.vip-section-bg::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #d4af37, transparent);
+}
+
+.vip-section-bg::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #d4af37, transparent);
+}
+
+.vip-section-content {
+    position: relative;
+    z-index: 1;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Header */
+.vip-header {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.vip-crown-container {
+    margin-bottom: 20px;
+}
+
+.vip-main-crown {
+    font-size: 4rem;
+    color: #d4af37;
+    filter: drop-shadow(0 0 30px rgba(212, 175, 55, 0.5));
+    animation: crownFloat 3s ease-in-out infinite;
+}
+
+@keyframes crownFloat {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+.vip-title {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 15px;
+    text-shadow: 0 0 30px rgba(212, 175, 55, 0.3);
+}
+
+.vip-subtitle {
+    font-size: 1.2rem;
+    color: #d4af37;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    font-weight: 500;
+}
+
+.vip-star {
+    font-size: 0.9rem;
+    animation: starPulse 2s ease-in-out infinite;
+}
+
+@keyframes starPulse {
+
+    0%,
+    100% {
+        opacity: 0.5;
+        transform: scale(0.9);
+    }
+
+    50% {
+        opacity: 1;
+        transform: scale(1.1);
+    }
+}
+
+/* Benefits */
+.vip-benefits {
+    margin-bottom: 80px;
+}
+
+.vip-benefits-title {
+    text-align: center;
+    font-size: 1.8rem;
+    color: #ffffff;
+    margin-bottom: 40px;
+    font-weight: 600;
+}
+
+.vip-benefits-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 25px;
+}
+
+.vip-benefit-card {
+    background: rgba(212, 175, 55, 0.05);
+    border: 1px solid rgba(212, 175, 55, 0.2);
+    border-radius: 16px;
+    padding: 30px 20px;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.vip-benefit-card:hover {
+    background: rgba(212, 175, 55, 0.1);
+    border-color: rgba(212, 175, 55, 0.4);
+    transform: translateY(-5px);
+}
+
+.vip-benefit-icon {
+    font-size: 2.5rem;
+    color: #d4af37;
+    margin-bottom: 15px;
+}
+
+.vip-benefit-card h4 {
+    color: #ffffff;
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+
+.vip-benefit-card p {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.9rem;
+    line-height: 1.5;
+}
+
+/* Plans */
+/* Plans Table */
+.vip-plans-title {
+    text-align: center;
+    font-size: 1.8rem;
+    color: #ffffff;
+    margin-bottom: 40px;
+    font-weight: 600;
+}
+
+.vip-plans-table-wrapper {
+    margin-top: 30px;
+    overflow-x: auto;
+    border-radius: 16px;
+    border: 1px solid rgba(212, 175, 55, 0.2);
+    background: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(10px);
+}
+
+.vip-plans-table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 900px;
+}
+
+.vip-plans-table thead th {
+    padding: 20px;
+    text-align: left;
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #d4af37;
+    background: rgba(0, 0, 0, 0.5);
+    border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+}
+
+.vip-plans-table tbody td {
+    padding: 25px 20px;
+    border-bottom: 1px solid rgba(212, 175, 55, 0.1);
+    color: #ffffff;
+    vertical-align: top;
+}
+
+.vip-plans-table tbody tr:hover td {
+    background: rgba(212, 175, 55, 0.03);
+}
+
+.vip-plans-table tbody tr.popular td {
+    background: rgba(212, 175, 55, 0.05);
+}
+
+.plan-name-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.plan-name {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #ffffff;
+}
+
+.plan-badge {
+    display: inline-block;
+    font-size: 0.7rem;
+    color: #000;
+    background: #d4af37;
+    padding: 4px 10px;
+    border-radius: 4px;
+    font-weight: 800;
+    text-transform: uppercase;
+    width: fit-content;
+}
+
+.price-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.old-price {
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.3);
+    text-decoration: line-through;
+}
+
+.new-price {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #d4af37;
+}
+
+.plan-desc-cell {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.95rem;
+    max-width: 250px;
+}
+
+.plan-features-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.plan-features-list li {
+    display: flex;
+    gap: 10px;
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.plan-features-list .check {
+    color: #d4af37;
+    font-weight: 700;
+}
+
+.plan-action-cell {
+    width: 150px;
+}
+
+.vip-select-button {
+    width: 100%;
+    padding: 12px;
+    background: transparent;
+    border: 1px solid #d4af37;
+    color: #d4af37;
+    border-radius: 8px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+}
+
+.vip-select-button:hover {
+    background: #d4af37;
+    color: #000;
+    box-shadow: 0 0 20px rgba(212, 175, 55, 0.4);
+}
+
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+    .vip-benefits-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .vip-section {
+        padding: 60px 15px;
+    }
+
+    .vip-benefits-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .vip-main-crown {
+        font-size: 3rem;
+    }
+
+    .vip-subtitle {
+        font-size: 1rem;
+    }
+}

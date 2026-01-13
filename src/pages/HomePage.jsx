@@ -7,7 +7,7 @@ import WhyDifferent from '../components/WhyDifferent';
 import Testimonials from '../components/Testimonials';
 import ExclusiveService from '../components/ExclusiveService';
 import Footer from '../components/Footer';
-import VipBanner from '../components/VipBanner';
+import VipSection from '../components/VipSection';
 
 const HomePage = ({ isVip = false }) => {
   // Add/remove vip-mode class on body for layout adjustments
@@ -24,12 +24,12 @@ const HomePage = ({ isVip = false }) => {
 
   return (
     <>
-      {isVip && <VipBanner />}
       <Header />
       <main>
-        <Hero isVip={isVip} />
+        <Hero />
+        {isVip && <VipSection />}
         <AlternatingFeatures />
-        <ServiceLevels isVip={isVip} />
+        {!isVip && <ServiceLevels isVip={isVip} />}
         <WhyDifferent />
         <ExclusiveService isVip={isVip} />
         <Testimonials />
@@ -40,4 +40,5 @@ const HomePage = ({ isVip = false }) => {
 };
 
 export default HomePage;
+
 
