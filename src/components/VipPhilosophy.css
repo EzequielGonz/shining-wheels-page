@@ -35,7 +35,7 @@
     font-size: 2rem;
     color: #d4af37;
     margin-bottom: 10px;
-    font-family: 'Playfair Display', serif;
+    font-family: var(--font-headings, 'Questrial', sans-serif);
 }
 
 .philosophy-thanks p {

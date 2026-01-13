@@ -22,7 +22,7 @@
 }
 
 .logo-line {
-  font-family: 'Arial', sans-serif;
+  font-family: var(--font-headings, 'Questrial', sans-serif);
   font-weight: 600;
   font-size: 1.8rem;
   color: #ffffff;
