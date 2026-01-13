@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Header from '../components/Header';
 import Hero from '../components/Hero';
 import AlternatingFeatures from '../components/AlternatingFeatures';
@@ -7,13 +7,27 @@ import WhyDifferent from '../components/WhyDifferent';
 import Testimonials from '../components/Testimonials';
 import ExclusiveService from '../components/ExclusiveService';
 import Footer from '../components/Footer';
+import VipBanner from '../components/VipBanner';
 
 const HomePage = ({ isVip = false }) => {
+  // Add/remove vip-mode class on body for layout adjustments
+  useEffect(() => {
+    if (isVip) {
+      document.body.classList.add('vip-mode');
+    } else {
+      document.body.classList.remove('vip-mode');
+    }
+    return () => {
+      document.body.classList.remove('vip-mode');
+    };
+  }, [isVip]);
+
   return (
     <>
+      {isVip && <VipBanner />}
       <Header />
       <main>
-        <Hero />
+        <Hero isVip={isVip} />
         <AlternatingFeatures />
         <ServiceLevels isVip={isVip} />
         <WhyDifferent />
@@ -26,3 +40,4 @@ const HomePage = ({ isVip = false }) => {
 };
 
 export default HomePage;
+

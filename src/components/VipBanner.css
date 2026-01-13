@@ -1,0 +1,86 @@
+.vip-banner {
+    background: linear-gradient(90deg, #d4af37 0%, #f5d76e 50%, #d4af37 100%);
+    padding: 12px 20px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1001;
+    animation: shimmer 3s ease-in-out infinite;
+}
+
+@keyframes shimmer {
+
+    0%,
+    100% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+}
+
+.vip-banner-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.vip-crown-icon,
+.vip-star-icon {
+    color: #1a1a2e;
+    font-size: 1.2rem;
+    animation: pulse-icon 2s ease-in-out infinite;
+}
+
+@keyframes pulse-icon {
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.1);
+    }
+}
+
+.vip-banner-text {
+    color: #1a1a2e;
+    font-size: 0.95rem;
+    text-align: center;
+    font-weight: 500;
+}
+
+.vip-banner-text strong {
+    font-weight: 700;
+}
+
+/* Push header down when VIP banner is present */
+body.vip-mode .header {
+    top: 48px;
+}
+
+body.vip-mode .hero {
+    margin-top: 48px;
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+    .vip-banner {
+        padding: 10px 15px;
+    }
+
+    .vip-banner-text {
+        font-size: 0.8rem;
+    }
+
+    .vip-crown-icon,
+    .vip-star-icon {
+        font-size: 1rem;
+    }
+}
