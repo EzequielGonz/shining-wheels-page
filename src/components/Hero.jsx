@@ -29,9 +29,14 @@ const Hero = () => {
         </div>
 
         <div className="hero-buttons">
-          <button className="hero-button-solid">
+          <a
+            href="https://wa.me/13054950045?text=Hola,%20quiero%20reservar%20un%20turno"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hero-button-solid"
+          >
             Book Appointment
-          </button>
+          </a>
           <button className="hero-button-outline">
             View Services
           </button>

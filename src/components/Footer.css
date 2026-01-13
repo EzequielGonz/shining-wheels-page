@@ -36,16 +36,18 @@
     min-width: 300px;
 }
 
-.footer-logo {
-    font-size: 2rem;
-    /* Larger, more impactful */
-    font-weight: 300;
-    /* Lighter weight for elegance */
-    color: #ffffff;
-    margin-bottom: 1.5rem;
-    display: block;
-    letter-spacing: -1px;
-    text-transform: uppercase;
+.footer-logo-wrapper {
+    margin-bottom: 2rem;
+    display: flex;
+    justify-content: flex-start;
+}
+
+.footer-logo-wrapper .logo-container {
+    justify-content: flex-start;
+}
+
+.footer-logo-wrapper .logo-image {
+    height: 50px;
 }
 
 .footer-desc {
@@ -54,6 +56,16 @@
     line-height: 1.8;
     max-width: 350px;
     font-weight: 300;
+}
+
+.footer-location {
+    color: #d4af37;
+    /* Gold accent to match VIP elements */
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin-top: 1rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
 }
 
 .footer-links {

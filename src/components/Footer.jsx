@@ -1,15 +1,19 @@
 import React from 'react';
 import './Footer.css';
+import Logo from './Logo';
 
 const Footer = ({ isVip = false }) => {
     return (
         <footer className={`footer ${isVip ? 'footer-vip' : ''}`}>
             <div className="footer-container">
                 <div className="footer-brand">
-                    <span className="footer-logo">SHINING WHEELS</span>
+                    <div className="footer-logo-wrapper">
+                        <Logo />
+                    </div>
                     <p className="footer-desc">
                         Premium mobile detailing service for those who expect nothing but excellence. Miami's finest finish.
                     </p>
+                    <p className="footer-location">Estamos en Miami</p>
                     <div className="footer-socials">
                         {/* Dummy Icons */}
                         <div className="social-icon">IG</div>
