@@ -1,103 +1,84 @@
 import React from 'react';
 import './WhyDifferent.css';
+import { FaHome, FaClock, FaStar, FaFlask, FaShieldAlt, FaUserCog } from 'react-icons/fa';
 
 const WhyDifferent = () => {
   const features = [
     {
-      title: 'Comodidad absoluta',
-      description:
-        'El detalle llega hasta donde estés, evitando desplazamientos y esperas.',
+      title: 'Comodidad Absoluta',
+      description: 'Llegamos donde estés. No necesitas moverte de tu casa u oficina.',
+      icon: <FaHome />,
+      size: 'large'
     },
     {
-      title: 'Ahorro de tiempo',
-      description:
-        'Reduces a cero el tiempo muerto en un túnel de lavado; puedes seguir con tu rutina.',
+      title: 'Ahorro de Tiempo',
+      description: 'Evita esperas en túneles de lavado. Nosotros hacemos el trabajo mientras tú continuas con tu día.',
+      icon: <FaClock />,
+      size: 'large'
     },
     {
-      title: 'Calidad de productos',
-      description:
-        'Se usan químicos y herramientas premium específicos para cada superficie del vehículo.',
+      title: 'Productos Premium',
+      description: 'Utilizamos solo productos de la más alta calidad para cada superficie de tu vehículo.',
+      icon: <FaStar />,
+      size: 'small'
     },
     {
-      title: 'Proceso multi‑etapa',
-      description:
-        'Limpiezas alcalinas y ácidas controladas que eliminan suciedad orgánica e inorgánica sin dañar la pintura.',
+      title: 'Proceso Multi-etapa',
+      description: 'Limpieza profunda con productos especializados para cada tipo de suciedad.',
+      icon: <FaFlask />,
+      size: 'small'
     },
     {
-      title: 'Protección de pintura',
-      description:
-        'Aplicación de selladores rápidos o coatings de un paso para preservar el acabado.',
+      title: 'Protección Avanzada',
+      description: 'Aplicamos selladores y protectores para mantener tu auto impecable por más tiempo.',
+      icon: <FaShieldAlt />,
+      size: 'small'
     },
     {
-      title: 'Cuidado interior a medida',
-      description:
-        'Uso de limpiadores de tejidos, piel y sanitizantes seguros para cada material.',
-    },
-    {
-      title: 'Solución de olores',
-      description:
-        'Tratamiento enzimático y oxidativo para eliminar olores orgánicos persistentes.',
-    },
-    {
-      title: 'Detalle de ruedas y llantas',
-      description:
-        'Limpia y, si se desea, aplica protección hidrofóbica que facilita el mantenimiento.',
-    },
-    {
-      title: 'Seguridad y confidencialidad',
-      description:
-        'No dejas el coche con extraños en un lavadero; todo se realiza frente a ti.',
-    },
-    {
-      title: 'Atención personalizada',
-      description:
-        'El técnico adapta la limpieza y protección al estado real del coche y a tus prioridades.',
-    },
-    {
-      title: 'Flexibilidad horaria',
-      description:
-        'Servicios 24/7 o según reserva; ideal para jornadas laborales exigentes.',
-    },
-    {
-      title: 'Especialización en superficies delicadas',
-      description:
-        'Tratamientos seguros para vehículos con wrap, PPF, cerámicos o piel delicada.',
-    },
-    {
-      title: 'Servicio "todo incluido"',
-      description:
-        'Autocontenido; no necesitas agua corriente ni luz (llevan depósitos y generador).',
-    },
-    {
-      title: 'Inspección final minuciosa',
-      description:
-        'Se revisan detalles y se retoca in situ hasta alcanzar el resultado deseado.',
-    },
-    {
-      title: 'Imagen profesional y tranquilidad',
-      description:
-        'Al emplear procesos y productos premium, el cliente percibe que está invirtiendo en la conservación y valor de su vehículo.',
-    },
+      title: 'Atención Personalizada',
+      description: 'Cada servicio se adapta a las necesidades específicas de tu vehículo.',
+      icon: <FaUserCog />,
+      size: 'small'
+    }
   ];
 
   return (
-    <section className="why-different">
+    <section className="why-different" id="why-different">
       <div className="why-different-container">
-        <h2 className="why-different-title">Por qué somos diferentes</h2>
-        <p className="why-different-subtitle">
-          Un servicio premium diseñado para quienes valoran la excelencia
-        </p>
+        <div className="why-different-header">
+          <span className="section-tag">Nuestra Diferencia</span>
+          <h2 className="why-different-title">¿Por qué somos diferentes?</h2>
+          <div className="title-accent"></div>
+          <p className="why-different-subtitle">
+            Descubre lo que nos hace únicos en el mercado del detailing automotriz
+          </p>
+        </div>
 
-        <div className="features-grid">
+        <div className="bento-grid">
           {features.map((feature, index) => (
-            <div key={index} className="feature-card">
-              <div className="feature-check">
-                <span className="check-icon">✔︎</span>
+            <div
+              key={index}
+              className={`bento-card ${feature.size}`}
+              style={{ animationDelay: `${index * 0.1}s` }}
+            >
+              <div className="bento-glow"></div>
+              <div className="bento-content">
+                <div className="bento-icon">
+                  {feature.icon}
+                </div>
+                <h3 className="bento-title">{feature.title}</h3>
+                <p className="bento-description">{feature.description}</p>
               </div>
-              <h3 className="feature-card-title">{feature.title}</h3>
-              <p className="feature-card-description">{feature.description}</p>
+              <div className="bento-accent"></div>
             </div>
           ))}
+        </div>
+
+        <div className="why-different-cta">
+          <a href="#services" className="cta-link">
+            Ver Nuestros Servicios
+            <span className="cta-arrow">→</span>
+          </a>
         </div>
       </div>
     </section>
@@ -105,4 +86,3 @@ const WhyDifferent = () => {
 };
 
 export default WhyDifferent;
-

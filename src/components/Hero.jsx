@@ -12,7 +12,7 @@ const Hero = () => {
           playsInline
           preload="auto"
         >
-          <source src="/1hero-vmake.mp4" type="video/mp4" />
+          <source src="/videoherocarwash.mp4" type="video/mp4" />
           {/* Fallback si no hay video */}
         </video>
         <div className="hero-video-overlay"></div>

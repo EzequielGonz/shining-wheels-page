@@ -1,90 +1,71 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React from 'react';
+import { useCart } from '../context/CartContext';
 import './ExclusiveService.css';
+import { FaCar, FaTachometerAlt, FaShieldAlt, FaBroom, FaRegSun, FaLightbulb } from 'react-icons/fa';
 
-const ExclusiveService = () => {
-    const [isVisible, setIsVisible] = useState(false);
-    const [showReview, setShowReview] = useState(false);
-    const [reviewText, setReviewText] = useState('');
-    const sectionRef = useRef(null);
+const ExclusiveService = ({ isVip = false }) => {
+  const { toggleAddon, cartItems } = useCart();
 
-    useEffect(() => {
-        const observer = new IntersectionObserver(
-            ([entry]) => {
-                if (entry.isIntersecting) {
-                    setIsVisible(true);
-                }
-            },
-            { threshold: 0.2 }
-        );
+  const addonPricing = {
+    'Recubrimiento Cerámico': { normal: 499, vip: 449 },
+    'Restauración de Faros': { normal: 89, vip: 79 },
+    'Limpieza Profunda de Tapicería': { normal: 149, vip: 129 },
+    'Pulido de Cristales': { normal: 79, vip: 69 },
+    'Detallado de Motor': { normal: 99, vip: 89 },
+    'Protección de Llantas': { normal: 59, vip: 49 },
+  };
 
-        if (sectionRef.current) {
-            observer.observe(sectionRef.current);
-        }
+  const getAddonPrice = (serviceName) => {
+    const price = isVip ? addonPricing[serviceName].vip : addonPricing[serviceName].normal;
+    return `Desde $${price}`;
+  };
 
-        return () => {
-            if (sectionRef.current) observer.unobserve(sectionRef.current);
-        };
-    }, []);
+  const addons = [
+    { service: 'Recubrimiento Cerámico', icon: <FaShieldAlt /> },
+    { service: 'Restauración de Faros', icon: <FaLightbulb /> },
+    { service: 'Limpieza Profunda de Tapicería', icon: <FaBroom /> },
+    { service: 'Pulido de Cristales', icon: <FaRegSun /> },
+    { service: 'Detallado de Motor', icon: <FaTachometerAlt /> },
+    { service: 'Protección de Llantas', icon: <FaCar /> },
+  ];
 
-    const ClockIcon = () => (
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="clock-icon">
-            <circle cx="12" cy="12" r="10"></circle>
-            <polyline points="12 6 12 12 16 14"></polyline>
-        </svg>
-    );
+  const isAddonInCart = (addonName) => {
+    return cartItems.some((item) => item.type === 'addon' && item.name === addonName);
+  };
 
-    const QuestionIcon = () => (
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="question-icon">
-            <circle cx="12" cy="12" r="10"></circle>
-            <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
-            <line x1="12" y1="17" x2="12.01" y2="17"></line>
-        </svg>
-    );
+  const handleToggleAddon = (addon) => {
+    const price = getAddonPrice(addon.service);
+    // Only pass serializable data (exclude icon which is a React component)
+    toggleAddon({ service: addon.service, price, name: addon.service });
+  };
 
-    return (
-        <section className={`exclusive-service ${isVisible ? 'animated' : ''}`} ref={sectionRef}>
-            <div className="exclusive-container">
-                <h2 className="exclusive-title">
-                    No somos un servicio premium
-                    <br />
-                    para todo el mundo.
-                </h2>
-
-                <p className="exclusive-text">
-                    Solo para la gente que busca la diferencia. Aquellos atentos a los detalles.
-                    <br />
-                    Aquellos que deben ser tratados por el
-                    <span className="exclusive-highlight"> "Mejor Servicio de Miami"</span>
-                </p>
-
-                <div className="questions-btn" onClick={() => setShowReview(true)}>
-                    <QuestionIcon />
-                    <span>¿Tienes Dudas?</span>
-                </div>
-
-                <div className="response-time-btn">
-                    <ClockIcon />
-                    <span>Tiempo de respuesta 2 horas</span>
-                </div>
-
-                {showReview && (
-                    <div className="review-box">
-                        <h3 className="review-title">Escribe tu reseña</h3>
-                        <textarea
-                            className="review-textarea"
-                            value={reviewText}
-                            onChange={(e) => setReviewText(e.target.value)}
-                            placeholder="Cuéntanos tu experiencia o tus dudas..."
-                        />
-                        <div className="review-actions">
-                            <button className="review-send-btn">Enviar</button>
-                            <button className="review-cancel-btn" onClick={() => setShowReview(false)}>Cerrar</button>
-                        </div>
-                    </div>
-                )}
+  return (
+    <section className="exclusive-services" id="add-ons">
+      <div className="exclusive-container">
+        <h2 className="exclusive-title">Servicios Exclusivos Adicionales</h2>
+        <p className="exclusive-subtitle">
+          {isVip
+            ? 'Añade extras a tu plan VIP con precios especiales'
+            : 'Personaliza tu paquete con nuestros add-ons premium.'}
+        </p>
+        <div className="addons-grid">
+          {addons.map((addon, index) => (
+            <div key={index} className="addon-card">
+              <div className="addon-icon">{addon.icon}</div>
+              <h3 className="addon-name">{addon.service}</h3>
+              <p className="addon-price">{getAddonPrice(addon.service)}</p>
+              <button
+                className={`addon-button ${isAddonInCart(addon.service) ? 'selected' : ''}`}
+                onClick={() => handleToggleAddon(addon)}
+              >
+                {isAddonInCart(addon.service) ? '✓ Seleccionado' : 'Agregar'}
+              </button>
             </div>
-        </section>
-    );
+          ))}
+        </div>
+      </div>
+    </section>
+  );
 };
 
 export default ExclusiveService;

@@ -1,18 +1,11 @@
 import React, { useState } from 'react';
-import { CartProvider } from './context/CartContext';
+import { Routes, Route } from 'react-router-dom';
 import Cart from './components/Cart';
-import Header from './components/Header';
-import Hero from './components/Hero';
-import AlternatingFeatures from './components/AlternatingFeatures';
-import ServiceLevels from './components/ServiceLevels';
-import WhyDifferent from './components/WhyDifferent';
 import ScrollToTop from './components/ScrollToTop';
 import Loader from './components/Loader';
 import BackgroundAnimation from './components/BackgroundAnimation';
 import WhatsAppButton from './components/WhatsAppButton';
-import Testimonials from './components/Testimonials';
-import ExclusiveService from './components/ExclusiveService';
-import Footer from './components/Footer';
+import HomePage from './pages/HomePage';
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
@@ -22,25 +15,17 @@ function App() {
   };
 
   return (
-    <CartProvider>
-      <div className="App">
-        {isLoading && <Loader onComplete={handleLoadComplete} />}
-        <BackgroundAnimation />
-        <Header />
-        <Cart />
-        <main>
-          <Hero />
-          <AlternatingFeatures />
-          <ServiceLevels />
-          <WhyDifferent />
-          <Testimonials />
-          <ExclusiveService />
-          <Footer />
-        </main>
-        <ScrollToTop />
-        <WhatsAppButton />
-      </div>
-    </CartProvider>
+    <div className="App">
+      {isLoading && <Loader onComplete={handleLoadComplete} />}
+      <BackgroundAnimation />
+      <Cart />
+      <ScrollToTop />
+      <WhatsAppButton />
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/vip" element={<HomePage isVip={true} />} />
+      </Routes>
+    </div>
   );
 }
 
