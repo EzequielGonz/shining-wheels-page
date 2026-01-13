@@ -1,0 +1,46 @@
+.vip-philosophy {
+    padding: 150px 20px;
+    background: #000;
+    text-align: center;
+}
+
+.philosophy-container {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.philosophy-title {
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    color: #fff;
+    margin-bottom: 50px;
+    font-weight: 200;
+    letter-spacing: -2px;
+}
+
+.philosophy-p {
+    font-size: clamp(1.2rem, 3vw, 2.2rem);
+    color: rgba(255, 255, 255, 0.8);
+    line-height: 1.4;
+    font-weight: 300;
+    margin-bottom: 80px;
+    font-style: italic;
+}
+
+.philosophy-thanks {
+    border-top: 1px solid rgba(212, 175, 55, 0.2);
+    padding-top: 50px;
+}
+
+.philosophy-thanks h3 {
+    font-size: 2rem;
+    color: #d4af37;
+    margin-bottom: 10px;
+    font-family: 'Playfair Display', serif;
+}
+
+.philosophy-thanks p {
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 1rem;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+}

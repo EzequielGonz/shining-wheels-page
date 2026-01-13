@@ -1,0 +1,163 @@
+.ultimate-vip {
+    padding: 100px 20px;
+    background: #050505;
+    color: #fff;
+    position: relative;
+}
+
+.ultimate-container {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.ultimate-card {
+    background: linear-gradient(145deg, #0a0a0a 0%, #151515 100%);
+    border: 1px solid rgba(212, 175, 55, 0.3);
+    border-radius: 30px;
+    padding: 60px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5), 0 0 40px rgba(212, 175, 55, 0.1);
+}
+
+.ultimate-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg, transparent, #d4af37, transparent);
+}
+
+.ultimate-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.ultimate-icon {
+    font-size: 3rem;
+    color: #d4af37;
+    margin-bottom: 20px;
+}
+
+.ultimate-header h2 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 15px;
+    letter-spacing: -1px;
+}
+
+.ultimate-price {
+    font-size: 4rem;
+    font-weight: 800;
+    color: #d4af37;
+    font-family: 'Inter', sans-serif;
+}
+
+.ultimate-main-desc {
+    font-size: 1.1rem;
+    color: rgba(255, 255, 255, 0.7);
+    text-align: center;
+    line-height: 1.8;
+    margin-bottom: 40px;
+}
+
+.ultimate-features {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 50px;
+    display: grid;
+    gap: 20px;
+}
+
+.ultimate-features li {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.ultimate-features li svg {
+    color: #d4af37;
+    font-size: 1.2rem;
+    flex-shrink: 0;
+}
+
+.surprise-box {
+    background: rgba(212, 175, 55, 0.1);
+    border: 1px dashed #d4af37;
+    border-radius: 15px;
+    padding: 25px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 50px;
+}
+
+.gift-icon {
+    font-size: 2.5rem;
+    color: #d4af37;
+    animation: giftBounce 2s infinite;
+}
+
+@keyframes giftBounce {
+
+    0%,
+    100% {
+        transform: translateY(0) rotate(0);
+    }
+
+    50% {
+        transform: translateY(-5px) rotate(5deg);
+    }
+}
+
+.surprise-box strong {
+    display: block;
+    font-size: 1.1rem;
+    color: #d4af37;
+    margin-bottom: 5px;
+}
+
+.surprise-box p {
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.6);
+    margin: 0;
+}
+
+.ultimate-button {
+    width: 100%;
+    padding: 20px;
+    background: #d4af37;
+    color: #000;
+    border: none;
+    border-radius: 15px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.ultimate-button:hover {
+    background: #f5d76e;
+    transform: translateY(-3px);
+    box-shadow: 0 15px 30px rgba(212, 175, 55, 0.3);
+}
+
+@media (max-width: 768px) {
+    .ultimate-card {
+        padding: 30px;
+    }
+
+    .ultimate-header h2 {
+        font-size: 1.8rem;
+    }
+
+    .ultimate-price {
+        font-size: 3rem;
+    }
+}

@@ -1,9 +1,9 @@
 import React from 'react';
 import './Footer.css';
 
-const Footer = () => {
+const Footer = ({ isVip = false }) => {
     return (
-        <footer className="footer">
+        <footer className={`footer ${isVip ? 'footer-vip' : ''}`}>
             <div className="footer-container">
                 <div className="footer-brand">
                     <span className="footer-logo">SHINING WHEELS</span>
