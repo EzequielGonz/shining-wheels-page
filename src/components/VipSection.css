@@ -225,6 +225,12 @@
     font-size: 1.2rem;
     font-weight: 700;
     color: #ffffff;
+    background: linear-gradient(90deg, #d4af37, #f5d76e, #d4af37);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: shine 3s linear infinite;
 }
 
 .plan-badge {

@@ -6,6 +6,7 @@ import BackgroundAnimation from './components/BackgroundAnimation';
 import WhatsAppButton from './components/WhatsAppButton';
 import HomePage from './pages/HomePage';
 import VipPage from './pages/VipPage';
+import VipAccessPage from './pages/VipAccessPage';
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
@@ -23,6 +24,7 @@ function App() {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/vip" element={<VipPage />} />
+        <Route path="/vip-access" element={<VipAccessPage />} />
       </Routes>
     </div>
   );

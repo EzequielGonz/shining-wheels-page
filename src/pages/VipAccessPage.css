@@ -1,0 +1,161 @@
+.vip-access-page {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    background: black;
+    color: white;
+    padding: 2rem;
+}
+
+.access-container {
+    position: relative;
+    z-index: 10;
+    width: 100%;
+    max-width: 500px;
+}
+
+.access-card {
+    background: rgba(15, 15, 15, 0.7);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    padding: 4rem 3rem;
+    border-radius: 32px;
+    border: 1px solid rgba(212, 175, 55, 0.1);
+    /* Subtle gold border */
+    text-align: center;
+    box-shadow: 0 40px 100px rgba(0, 0, 0, 0.8);
+}
+
+.crown-icon-large {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 2rem;
+    color: #D4AF37;
+    /* Metallic Gold */
+    filter: drop-shadow(0 0 15px rgba(212, 175, 55, 0.4));
+}
+
+.access-card h1 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    background: linear-gradient(135deg, #FFF 0%, #D4AF37 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-family: var(--font-headings);
+}
+
+.access-card p {
+    color: var(--text-secondary);
+    margin-bottom: 3rem;
+    font-size: 1.1rem;
+}
+
+.access-form {
+    position: relative;
+}
+
+.input-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.access-form input {
+    width: 100%;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 1.2rem 4rem 1.2rem 1.5rem;
+    border-radius: 14px;
+    color: white;
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
+    outline: none;
+}
+
+.access-form input:focus {
+    border-color: #D4AF37;
+    background: rgba(212, 175, 55, 0.05);
+    box-shadow: 0 0 20px rgba(212, 175, 55, 0.1);
+}
+
+.submit-arrow {
+    position: absolute;
+    right: 8px;
+    width: 44px;
+    height: 44px;
+    background: #D4AF37;
+    border: none;
+    border-radius: 10px;
+    color: black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.submit-arrow:hover {
+    transform: scale(1.05);
+    background: #F5D142;
+}
+
+.submit-arrow svg {
+    width: 24px;
+    height: 24px;
+}
+
+.error-text {
+    display: block;
+    margin-top: 1rem;
+    color: #ff4d4d;
+    font-size: 0.9rem;
+}
+
+.back-link {
+    margin-top: 3rem;
+    background: transparent;
+    border: none;
+    color: var(--text-tertiary);
+    cursor: pointer;
+    transition: color 0.3s ease;
+    font-size: 0.9rem;
+    text-decoration: underline;
+}
+
+.back-link:hover {
+    color: white;
+}
+
+@keyframes shake {
+
+    0%,
+    100% {
+        transform: translateX(0);
+    }
+
+    25% {
+        transform: translateX(-10px);
+    }
+
+    75% {
+        transform: translateX(10px);
+    }
+}
+
+.shake {
+    animation: shake 0.4s ease;
+}
+
+@media (max-width: 768px) {
+    .access-card {
+        padding: 3rem 2rem;
+    }
+
+    .access-card h1 {
+        font-size: 1.6rem;
+    }
+}

@@ -130,3 +130,9 @@ html {
 .animate-on-scroll.animated {
   opacity: 1;
 }
+
+@keyframes shine {
+  to {
+    background-position: 200% center;
+  }
+}

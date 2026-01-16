@@ -9,6 +9,8 @@ import ExclusiveService from '../components/ExclusiveService';
 import Footer from '../components/Footer';
 import VipSection from '../components/VipSection';
 
+import DoubtsSection from '../components/DoubtsSection';
+
 const HomePage = ({ isVip = false }) => {
   // Add/remove vip-mode class on body for layout adjustments
   useEffect(() => {
@@ -33,6 +35,7 @@ const HomePage = ({ isVip = false }) => {
         <WhyDifferent />
         <ExclusiveService isVip={isVip} />
         <Testimonials />
+        <DoubtsSection />
         <Footer />
       </main>
     </>

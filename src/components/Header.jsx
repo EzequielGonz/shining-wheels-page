@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useCart } from '../context/CartContext';
 import Logo from './Logo';
 import './Header.css';
@@ -7,6 +8,7 @@ const Header = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const { setIsCartOpen, cartItems } = useCart();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -41,7 +43,12 @@ const Header = () => {
           <a href="#account" className="nav-link nv-account nav-link-utility">
             <span>Account</span>
           </a>
-          <button className="cta-button">Book Now</button>
+          <button className="cta-button vip-button" onClick={() => navigate('/vip-access')}>
+            <svg className="crown-icon" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M2 7l3 2 7-5 7 5 3-2v10H2V7z" />
+            </svg>
+            VIP
+          </button>
         </div>
 
         {/* Menú móvil hamburguesa */}
@@ -66,7 +73,12 @@ const Header = () => {
             Cart ({cartItems.length})
           </button>
           <a href="#account" className="mobile-nav-link">Account</a>
-          <button className="mobile-cta-button">Book Now</button>
+          <button className="mobile-cta-button vip-button" onClick={() => navigate('/vip-access')}>
+            <svg className="crown-icon" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M2 7l3 2 7-5 7 5 3-2v10H2V7z" />
+            </svg>
+            VIP
+          </button>
         </nav>
       )}
     </header>

@@ -92,6 +92,12 @@
   letter-spacing: 1px;
   text-transform: uppercase;
   color: #ffffff;
+  background: linear-gradient(90deg, #fff, #999, #fff);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shine 3s linear infinite;
 }
 
 .plan-badge {
@@ -185,5 +191,11 @@
 @media (max-width: 480px) {
   .plans-table {
     min-width: 760px;
+  }
+}
+
+@keyframes shine {
+  to {
+    background-position: 200% center;
   }
 }
