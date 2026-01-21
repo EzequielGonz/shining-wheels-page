@@ -37,7 +37,7 @@ const AlternatingFeatures = () => {
         className={`feature-block ${animatedBlocks.has(0) ? 'animated' : ''}`}
       >
         <div className="feature-image-container feature-image-left">
-          {/* Reemplaza con: <img src="/images/who-i-am.jpg" alt="Creator" className="feature-image" /> */}
+          <img src="https://i.ibb.co/v6Bs2Jw4/Whats-App-Image-2026-01-16-at-2-49-36-PM.jpg" alt="Creator" className="feature-image" />
           <div className="feature-image-placeholder">
             <span>Photo</span>
           </div>
@@ -95,10 +95,26 @@ const AlternatingFeatures = () => {
           </p>
         </div>
         <div className="feature-image-container feature-image-right">
-          {/* Reemplaza con: <img src="/images/products.jpg" alt="Products" className="feature-image" /> */}
-          <div className="feature-image-placeholder">
-            <span>Products</span>
-          </div>
+          {/* Video 1 - Replace with actual video path */}
+          <video
+            className="feature-video"
+            autoPlay
+            loop
+            muted
+            playsInline
+            onError={(e) => {
+              e.target.style.display = 'none';
+              const placeholder = document.createElement('div');
+              placeholder.className = 'feature-image-placeholder';
+              placeholder.innerHTML = '<span>Video</span>';
+              e.target.parentNode.appendChild(placeholder);
+            }}
+          >
+            <source src="/aaa.mp4" type="video/mp4" />
+            <div className="feature-image-placeholder">
+              <span>Video</span>
+            </div>
+          </video>
         </div>
       </div>
 
@@ -108,10 +124,26 @@ const AlternatingFeatures = () => {
         className={`feature-block ${animatedBlocks.has(2) ? 'animated' : ''}`}
       >
         <div className="feature-image-container feature-image-left">
-          {/* Reemplaza con: <img src="/images/service.jpg" alt="Service" className="feature-image" /> */}
-          <div className="feature-image-placeholder">
-            <span>Service</span>
-          </div>
+          {/* Video 2 - Replace with actual video path */}
+          <video
+            className="feature-video"
+            autoPlay
+            loop
+            muted
+            playsInline
+            onError={(e) => {
+              e.target.style.display = 'none';
+              const placeholder = document.createElement('div');
+              placeholder.className = 'feature-image-placeholder';
+              placeholder.innerHTML = '<span>Video</span>';
+              e.target.parentNode.appendChild(placeholder);
+            }}
+          >
+            <source src="/ccc.mp4" type="video/mp4" />
+            <div className="feature-image-placeholder">
+              <span>Video</span>
+            </div>
+          </video>
         </div>
         <div className="feature-content feature-content-right">
           <h2 className="feature-title">FUNDAMENTALS</h2>

@@ -13,7 +13,7 @@ const Footer = ({ isVip = false }) => {
                     <p className="footer-desc">
                         Premium mobile detailing service for those who expect nothing but excellence. Miami's finest finish.
                     </p>
-                    <p className="footer-location">Estamos en Miami</p>
+                    <p className="footer-location">Based in Miami</p>
                     <div className="footer-socials">
                         {/* Dummy Icons */}
                         <div className="social-icon">IG</div>

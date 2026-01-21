@@ -97,7 +97,7 @@ const Testimonials = () => {
                         className="review-btn"
                     >
                         <PencilIcon />
-                        <span>Deja una Reseña</span>
+                        <span>Leave a Review</span>
                     </a>
                 </div>
             </div>

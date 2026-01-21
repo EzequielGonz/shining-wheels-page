@@ -32,14 +32,14 @@ const VipAccessPage = () => {
                             <path d="M2 17h20" />
                         </svg>
                     </div>
-                    <h1>¿Formas parte del grupo VIP?</h1>
-                    <p>Ingresá la clave de acceso para continuar</p>
+                    <h1>Are you part of the VIP group?</h1>
+                    <p>Enter your access key to continue</p>
 
                     <form onSubmit={handleSubmit} className={`access-form ${error ? 'shake' : ''}`}>
                         <div className="input-wrapper">
                             <input
                                 type="password"
-                                placeholder="Clave de acceso"
+                                placeholder="Access Key"
                                 value={password}
                                 onChange={(e) => setPassword(e.target.value)}
                                 autoFocus
@@ -50,11 +50,11 @@ const VipAccessPage = () => {
                                 </svg>
                             </button>
                         </div>
-                        {error && <span className="error-text">Acceso denegado</span>}
+                        {error && <span className="error-text">Access Denied</span>}
                     </form>
 
                     <button className="back-link" onClick={() => navigate('/')}>
-                        Volver al inicio
+                        Back to Home
                     </button>
                 </div>
             </div>

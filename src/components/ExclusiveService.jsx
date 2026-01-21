@@ -1,32 +1,35 @@
 import React from 'react';
 import { useCart } from '../context/CartContext';
+import useScrollReveal from '../hooks/useScrollReveal';
 import './ExclusiveService.css';
 import { FaCar, FaTachometerAlt, FaShieldAlt, FaBroom, FaRegSun, FaLightbulb } from 'react-icons/fa';
 
 const ExclusiveService = ({ isVip = false }) => {
   const { toggleAddon, cartItems } = useCart();
+  const titleRef = useScrollReveal({ threshold: 0.3 });
+  const gridRef = useScrollReveal({ threshold: 0.1 });
 
   const addonPricing = {
-    'Recubrimiento Cerámico': { normal: 499, vip: 449 },
-    'Restauración de Faros': { normal: 89, vip: 79 },
-    'Limpieza Profunda de Tapicería': { normal: 149, vip: 129 },
-    'Pulido de Cristales': { normal: 79, vip: 69 },
-    'Detallado de Motor': { normal: 99, vip: 89 },
-    'Protección de Llantas': { normal: 59, vip: 49 },
+    'Ceramic Coating': { normal: 499, vip: 449 },
+    'Headlight Restoration': { normal: 89, vip: 79 },
+    'Deep Upholstery Cleaning': { normal: 149, vip: 129 },
+    'Glass Polishing': { normal: 79, vip: 69 },
+    'Engine Bay Detail': { normal: 99, vip: 89 },
+    'Wheel Protection': { normal: 59, vip: 49 },
   };
 
   const getAddonPrice = (serviceName) => {
     const price = isVip ? addonPricing[serviceName].vip : addonPricing[serviceName].normal;
-    return `Desde $${price}`;
+    return `From $${price}`;
   };
 
   const addons = [
-    { service: 'Recubrimiento Cerámico', icon: <FaShieldAlt /> },
-    { service: 'Restauración de Faros', icon: <FaLightbulb /> },
-    { service: 'Limpieza Profunda de Tapicería', icon: <FaBroom /> },
-    { service: 'Pulido de Cristales', icon: <FaRegSun /> },
-    { service: 'Detallado de Motor', icon: <FaTachometerAlt /> },
-    { service: 'Protección de Llantas', icon: <FaCar /> },
+    { service: 'Ceramic Coating', icon: <FaShieldAlt /> },
+    { service: 'Headlight Restoration', icon: <FaLightbulb /> },
+    { service: 'Deep Upholstery Cleaning', icon: <FaBroom /> },
+    { service: 'Glass Polishing', icon: <FaRegSun /> },
+    { service: 'Engine Bay Detail', icon: <FaTachometerAlt /> },
+    { service: 'Wheel Protection', icon: <FaCar /> },
   ];
 
   const isAddonInCart = (addonName) => {
@@ -42,13 +45,13 @@ const ExclusiveService = ({ isVip = false }) => {
   return (
     <section className="exclusive-services" id="add-ons">
       <div className="exclusive-container">
-        <h2 className="exclusive-title">Servicios Exclusivos Adicionales</h2>
-        <p className="exclusive-subtitle">
+        <h2 className="exclusive-title scroll-reveal-fade-up" ref={titleRef}>Exclusive Add-on Services</h2>
+        <p className="exclusive-subtitle scroll-reveal-fade-up" ref={titleRef}>
           {isVip
-            ? 'Añade extras a tu plan VIP con precios especiales'
-            : 'Personaliza tu paquete con nuestros add-ons premium.'}
+            ? 'Add extras to your VIP plan with special pricing'
+            : 'Customize your package with our premium add-ons.'}
         </p>
-        <div className="addons-grid">
+        <div className="addons-grid scroll-reveal-stagger" ref={gridRef}>
           {addons.map((addon, index) => (
             <div key={index} className="addon-card">
               <div className="addon-icon">{addon.icon}</div>
@@ -58,7 +61,7 @@ const ExclusiveService = ({ isVip = false }) => {
                 className={`addon-button ${isAddonInCart(addon.service) ? 'selected' : ''}`}
                 onClick={() => handleToggleAddon(addon)}
               >
-                {isAddonInCart(addon.service) ? '✓ Seleccionado' : 'Agregar'}
+                {isAddonInCart(addon.service) ? '✓ Selected' : 'Add'}
               </button>
             </div>
           ))}

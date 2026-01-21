@@ -1,42 +1,46 @@
 import React from 'react';
+import useScrollReveal from '../hooks/useScrollReveal';
 import './WhyDifferent.css';
 import { FaHome, FaClock, FaStar, FaFlask, FaShieldAlt, FaUserCog } from 'react-icons/fa';
 
 const WhyDifferent = () => {
+  const headerRef = useScrollReveal({ threshold: 0.3 });
+  const gridRef = useScrollReveal({ threshold: 0.1 });
+
   const features = [
     {
-      title: 'Comodidad Absoluta',
-      description: 'Llegamos donde estés. No necesitas moverte de tu casa u oficina.',
+      title: 'Absolute Comfort',
+      description: 'We come to you. No need to leave your home or office.',
       icon: <FaHome />,
       size: 'large'
     },
     {
-      title: 'Ahorro de Tiempo',
-      description: 'Evita esperas en túneles de lavado. Nosotros hacemos el trabajo mientras tú continuas con tu día.',
+      title: 'Time Saving',
+      description: 'Avoid waiting in car wash tunnels. We do the work while you continue with your day.',
       icon: <FaClock />,
       size: 'large'
     },
     {
-      title: 'Productos Premium',
-      description: 'Utilizamos solo productos de la más alta calidad para cada superficie de tu vehículo.',
+      title: 'Premium Products',
+      description: 'We use only the highest quality products for every surface of your vehicle.',
       icon: <FaStar />,
       size: 'small'
     },
     {
-      title: 'Proceso Multi-etapa',
-      description: 'Limpieza profunda con productos especializados para cada tipo de suciedad.',
+      title: 'Multi-stage Process',
+      description: 'Deep cleaning with specialized products for every type of dirt.',
       icon: <FaFlask />,
       size: 'small'
     },
     {
-      title: 'Protección Avanzada',
-      description: 'Aplicamos selladores y protectores para mantener tu auto impecable por más tiempo.',
+      title: 'Advanced Protection',
+      description: 'We apply sealants and protectants to keep your car flawless for longer.',
       icon: <FaShieldAlt />,
       size: 'small'
     },
     {
-      title: 'Atención Personalizada',
-      description: 'Cada servicio se adapta a las necesidades específicas de tu vehículo.',
+      title: 'Personalized Attention',
+      description: 'Every service is adapted to the specific needs of your vehicle.',
       icon: <FaUserCog />,
       size: 'small'
     }
@@ -45,16 +49,16 @@ const WhyDifferent = () => {
   return (
     <section className="why-different" id="why-different">
       <div className="why-different-container">
-        <div className="why-different-header">
-          <span className="section-tag">Nuestra Diferencia</span>
-          <h2 className="why-different-title">¿Por qué somos diferentes?</h2>
+        <div className="why-different-header scroll-reveal-fade-up" ref={headerRef}>
+          <span className="section-tag">Our Difference</span>
+          <h2 className="why-different-title">Why Are We Different?</h2>
           <div className="title-accent"></div>
           <p className="why-different-subtitle">
-            Descubre lo que nos hace únicos en el mercado del detailing automotriz
+            Discover what makes us unique in the auto detailing market
           </p>
         </div>
 
-        <div className="bento-grid">
+        <div className="bento-grid scroll-reveal-stagger" ref={gridRef}>
           {features.map((feature, index) => (
             <div
               key={index}
@@ -76,7 +80,7 @@ const WhyDifferent = () => {
 
         <div className="why-different-cta">
           <a href="#services" className="cta-link">
-            Ver Nuestros Servicios
+            View Our Services
             <span className="cta-arrow">→</span>
           </a>
         </div>

@@ -1,0 +1,142 @@
+/* Scroll Reveal Animations */
+
+/* Base state - elements are hidden before they enter viewport */
+.scroll-reveal {
+    opacity: 0;
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.scroll-reveal-visible {
+    opacity: 1;
+}
+
+/* Fade In Up - Element slides up while fading in */
+.scroll-reveal-fade-up {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.scroll-reveal-fade-up.scroll-reveal-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Fade In Left - Element slides from left while fading in */
+.scroll-reveal-fade-left {
+    opacity: 0;
+    transform: translateX(-50px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.scroll-reveal-fade-left.scroll-reveal-visible {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* Fade In Right - Element slides from right while fading in */
+.scroll-reveal-fade-right {
+    opacity: 0;
+    transform: translateX(50px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.scroll-reveal-fade-right.scroll-reveal-visible {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* Fade In - Simple fade without movement */
+.scroll-reveal-fade {
+    opacity: 0;
+    transition: opacity 0.8s ease-out;
+}
+
+.scroll-reveal-fade.scroll-reveal-visible {
+    opacity: 1;
+}
+
+/* Scale In - Element scales up while fading in */
+.scroll-reveal-scale {
+    opacity: 0;
+    transform: scale(0.9);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.scroll-reveal-scale.scroll-reveal-visible {
+    opacity: 1;
+    transform: scale(1);
+}
+
+/* Staggered animations for child elements */
+.scroll-reveal-stagger>* {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.scroll-reveal-stagger.scroll-reveal-visible>*:nth-child(1) {
+    transition-delay: 0.1s;
+}
+
+.scroll-reveal-stagger.scroll-reveal-visible>*:nth-child(2) {
+    transition-delay: 0.2s;
+}
+
+.scroll-reveal-stagger.scroll-reveal-visible>*:nth-child(3) {
+    transition-delay: 0.3s;
+}
+
+.scroll-reveal-stagger.scroll-reveal-visible>*:nth-child(4) {
+    transition-delay: 0.4s;
+}
+
+.scroll-reveal-stagger.scroll-reveal-visible>*:nth-child(5) {
+    transition-delay: 0.5s;
+}
+
+.scroll-reveal-stagger.scroll-reveal-visible>*:nth-child(6) {
+    transition-delay: 0.6s;
+}
+
+.scroll-reveal-stagger.scroll-reveal-visible>* {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Respect user preferences for reduced motion */
+@media (prefers-reduced-motion: reduce) {
+
+    .scroll-reveal,
+    .scroll-reveal-fade-up,
+    .scroll-reveal-fade-left,
+    .scroll-reveal-fade-right,
+    .scroll-reveal-fade,
+    .scroll-reveal-scale,
+    .scroll-reveal-stagger>* {
+        opacity: 1;
+        transform: none;
+        transition: none;
+    }
+}
+
+/* Delay variants for more control */
+.scroll-reveal-delay-1 {
+    transition-delay: 0.1s;
+}
+
+.scroll-reveal-delay-2 {
+    transition-delay: 0.2s;
+}
+
+.scroll-reveal-delay-3 {
+    transition-delay: 0.3s;
+}
+
+.scroll-reveal-delay-4 {
+    transition-delay: 0.4s;
+}
+
+.scroll-reveal-delay-5 {
+    transition-delay: 0.5s;
+}

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import useScrollReveal from '../hooks/useScrollReveal';
 import './DoubtsSection.css';
 
 const DoubtsSection = () => {
@@ -9,6 +10,9 @@ const DoubtsSection = () => {
         phone: ''
     });
     const [isSent, setIsSent] = useState(false);
+
+    const headerRef = useScrollReveal({ threshold: 0.3 });
+    const formRef = useScrollReveal({ threshold: 0.2 });
 
     const handleInputChange = (e) => {
         const { name, value } = e.target;
@@ -34,7 +38,7 @@ const DoubtsSection = () => {
 
     const handleFinalSubmit = () => {
         // Generate WhatsApp message
-        const message = `Hola! Tengo una duda:\n\n*Duda:* ${formData.doubt}\n*Nombre:* ${formData.name}\n*Teléfono:* ${formData.phone}`;
+        const message = `Hello! I have a question:\n\n*Question:* ${formData.doubt}\n*Name:* ${formData.name}\n*Phone:* ${formData.phone}`;
         const whatsappUrl = `https://wa.me/+13054950045?text=${encodeURIComponent(message)}`;
 
         setIsSent(true);
@@ -48,12 +52,12 @@ const DoubtsSection = () => {
     return (
         <section className="doubts-section" id="contacto">
             <div className="doubts-container">
-                <div className="doubts-header">
-                    <h2>¿Tenés dudas?</h2>
-                    <p>Estamos acá para ayudarte. Dejanos tu consulta y te contactamos en minutos.</p>
+                <div className="doubts-header scroll-reveal-fade-up" ref={headerRef}>
+                    <h2>Have Questions?</h2>
+                    <p>We are here to help. Leave your query and we'll contact you in minutes.</p>
                 </div>
 
-                <div className="doubts-form-wrapper">
+                <div className="doubts-form-wrapper scroll-reveal-fade" ref={formRef}>
                     {!isSent ? (
                         <div className={`doubts-form-step step-${step}`}>
                             <div className="progress-bar">
@@ -62,16 +66,16 @@ const DoubtsSection = () => {
 
                             {step === 1 && (
                                 <div className="input-group">
-                                    <label htmlFor="doubt">¿En qué podemos ayudarte?</label>
+                                    <label htmlFor="doubt">How can we help you?</label>
                                     <div className="input-with-arrow">
                                         <textarea
                                             id="doubt"
                                             name="doubt"
-                                            placeholder="Escribí tu consulta aquí..."
+                                            placeholder="Type your question here..."
                                             value={formData.doubt}
                                             onChange={handleInputChange}
                                             onKeyPress={handleKeyPress}
-                                            autoFocus
+
                                         />
                                         <button
                                             className="arrow-btn"
@@ -88,17 +92,17 @@ const DoubtsSection = () => {
 
                             {step === 2 && (
                                 <div className="input-group">
-                                    <label htmlFor="name">¿Cuál es tu nombre?</label>
+                                    <label htmlFor="name">What is your name?</label>
                                     <div className="input-with-arrow">
                                         <input
                                             type="text"
                                             id="name"
                                             name="name"
-                                            placeholder="Tu nombre completo"
+                                            placeholder="Your full name"
                                             value={formData.name}
                                             onChange={handleInputChange}
                                             onKeyPress={handleKeyPress}
-                                            autoFocus
+
                                         />
                                         <button
                                             className="arrow-btn"
@@ -115,7 +119,7 @@ const DoubtsSection = () => {
 
                             {step === 3 && (
                                 <div className="input-group">
-                                    <label htmlFor="phone">Dejanos tu celular</label>
+                                    <label htmlFor="phone">Leave us your number</label>
                                     <div className="input-with-arrow">
                                         <input
                                             type="tel"
@@ -125,7 +129,7 @@ const DoubtsSection = () => {
                                             value={formData.phone}
                                             onChange={handleInputChange}
                                             onKeyPress={handleKeyPress}
-                                            autoFocus
+
                                         />
                                         <button
                                             className="arrow-btn submit-btn"
@@ -141,7 +145,7 @@ const DoubtsSection = () => {
                             )}
 
                             <div className="step-indicator">
-                                Paso {step} de 3
+                                Step {step} of 3
                             </div>
                         </div>
                     ) : (
@@ -151,8 +155,8 @@ const DoubtsSection = () => {
                                     <polyline points="20 6 9 17 4 12" />
                                 </svg>
                             </div>
-                            <h3>¡Mensaje enviado!</h3>
-                            <p>Te estamos redirigiendo a WhatsApp para finalizar la consulta...</p>
+                            <h3>Message Sent!</h3>
+                            <p>Redirecting you to WhatsApp to finalize your inquiry...</p>
                         </div>
                     )}
                 </div>

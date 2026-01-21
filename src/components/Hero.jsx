@@ -30,7 +30,7 @@ const Hero = () => {
 
         <div className="hero-buttons">
           <a
-            href="https://wa.me/13054950045?text=Hola,%20quiero%20reservar%20un%20turno"
+            href="https://wa.me/13054950045?text=Hello,%20I%20want%20to%20book%20an%20appointment"
             target="_blank"
             rel="noopener noreferrer"
             className="hero-button-solid"

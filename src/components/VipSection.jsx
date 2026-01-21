@@ -7,10 +7,10 @@ const VipSection = () => {
     const { setServicePlan } = useCart();
 
     const vipBenefits = [
-        { icon: <FaPercentage />, title: 'Descuentos VIP', desc: 'Precios especiales reducidos en todos los planes y servicios' },
-        { icon: <FaHeadset />, title: 'Mejor Atención', desc: 'Soporte prioritario y atención personalizada de primer nivel' },
-        { icon: <FaClock />, title: 'Citas Prioritarias', desc: 'Acceso a los mejores horarios sin esperas' },
-        { icon: <FaGem />, title: 'Servicios Exclusivos', desc: 'Acceso a add-ons y tratamientos de alta gama' },
+        { icon: <FaPercentage />, title: 'VIP Discounts', desc: 'Special reduced pricing on all plans and services' },
+        { icon: <FaHeadset />, title: 'Premium Support', desc: 'Priority support and top-tier personalized attention' },
+        { icon: <FaClock />, title: 'Priority Booking', desc: 'Access to the best time slots without waiting' },
+        { icon: <FaGem />, title: 'Exclusive Services', desc: 'Access to high-end add-ons and treatments' },
     ];
 
     const vipPlans = [
@@ -18,30 +18,30 @@ const VipSection = () => {
             name: 'Essentials',
             originalPrice: 89,
             vipPrice: 75,
-            description: 'Limpieza básica exterior e interior',
-            features: ['Lavado exterior completo', 'Limpieza de llantas', 'Aspirado interior', 'Limpieza de tablero'],
+            description: 'Basic exterior cleaning and interior vacuum',
+            features: ['Full exterior wash', 'Wheel cleaning', 'Interior vacuum', 'Dashboard wipe-down'],
         },
         {
             name: 'Standard',
             originalPrice: 149,
             vipPrice: 129,
-            description: 'Servicio completo con detalles interiores',
-            features: ['Todo lo de Essentials', 'Limpieza de ventanas', 'Tratamiento de cuero', 'Aromatización premium'],
+            description: 'Full service with interior detailing',
+            features: ['Everything in Essentials', 'Window cleaning', 'Leather treatment', 'Premium scent'],
             popular: true,
         },
         {
             name: 'Pro',
             originalPrice: 199,
             vipPrice: 169,
-            description: 'Detallado profesional completo',
-            features: ['Todo lo de Standard', 'Pulido exterior', 'Protección de pintura', 'Limpieza de motor'],
+            description: 'Full professional detailing',
+            features: ['Everything in Standard', 'Exterior polish', 'Paint protection', 'Engine cleaning'],
         },
         {
             name: 'First Class',
             originalPrice: 299,
             vipPrice: 259,
-            description: 'Experiencia de lujo total',
-            features: ['Todo lo de Pro', 'Recubrimiento cerámico', 'Restauración de faros', 'Detallado de llantas premium'],
+            description: 'Total luxury experience',
+            features: ['Everything in Pro', 'Ceramic coating', 'Headlight restoration', 'Premium wheel detailing'],
         },
     ];
 
@@ -62,17 +62,17 @@ const VipSection = () => {
                     <div className="vip-crown-container">
                         <FaCrown className="vip-main-crown" />
                     </div>
-                    <h2 className="vip-title">Gracias por ser un excelente cliente</h2>
+                    <h2 className="vip-title">Thank you for being an excellent client</h2>
                     <p className="vip-subtitle">
                         <FaStar className="vip-star" />
-                        formas parte de los miembros vip
+                        you are part of the vip members
                         <FaStar className="vip-star" />
                     </p>
                 </div>
 
                 {/* Benefits */}
                 <div className="vip-benefits">
-                    <h3 className="vip-benefits-title">Tus Beneficios Exclusivos</h3>
+                    <h3 className="vip-benefits-title">Your Exclusive Benefits</h3>
                     <div className="vip-benefits-grid">
                         {vipBenefits.map((benefit, index) => (
                             <div key={index} className="vip-benefit-card">
@@ -86,16 +86,16 @@ const VipSection = () => {
 
                 {/* Plans Table */}
                 <div className="vip-plans">
-                    <h3 className="vip-plans-title">Tus Precios VIP</h3>
+                    <h3 className="vip-plans-title">Your VIP Prices</h3>
                     <div className="vip-plans-table-wrapper">
                         <table className="vip-plans-table">
                             <thead>
                                 <tr>
                                     <th>Plan</th>
-                                    <th>Precio</th>
-                                    <th>Descripción</th>
-                                    <th>Incluye</th>
-                                    <th>Acción</th>
+                                    <th>Price</th>
+                                    <th>Description</th>
+                                    <th>Includes</th>
+                                    <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -104,7 +104,7 @@ const VipSection = () => {
                                         <td className="plan-name-cell">
                                             <div className="plan-name-wrapper">
                                                 <span className="plan-name">{plan.name}</span>
-                                                {plan.popular && <span className="plan-badge">Más Popular</span>}
+                                                {plan.popular && <span className="plan-badge">Most Popular</span>}
                                             </div>
                                         </td>
                                         <td className="plan-price-cell">
@@ -126,7 +126,7 @@ const VipSection = () => {
                                         </td>
                                         <td className="plan-action-cell">
                                             <button className="vip-select-button" onClick={() => handleSelectPlan(plan)}>
-                                                Seleccionar
+                                                Select
                                             </button>
                                         </td>
                                     </tr>

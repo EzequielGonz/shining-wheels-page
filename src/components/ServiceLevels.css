@@ -71,8 +71,18 @@
   border-bottom: none;
 }
 
-.plans-table tbody tr:hover td {
-  background: rgba(255, 255, 255, 0.02);
+.plans-table tbody tr.clickable-row {
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.plans-table tbody tr.clickable-row:hover td {
+  background: rgba(220, 20, 60, 0.08);
+  transform: scale(1.005);
+}
+
+.plans-table tbody tr.clickable-row:active td {
+  background: rgba(220, 20, 60, 0.12);
 }
 
 .plans-table tbody tr.popular td {
@@ -92,12 +102,26 @@
   letter-spacing: 1px;
   text-transform: uppercase;
   color: #ffffff;
-  background: linear-gradient(90deg, #fff, #999, #fff);
-  background-size: 200% auto;
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  animation: shine 3s linear infinite;
+  text-shadow:
+    0 0 4px rgba(220, 20, 60, 0.35),
+    0 0 8px rgba(220, 20, 60, 0.2);
+  animation: text-breathe 4s ease-in-out infinite;
+}
+
+@keyframes text-breathe {
+
+  0%,
+  100% {
+    text-shadow:
+      0 0 4px rgba(220, 20, 60, 0.35),
+      0 0 8px rgba(220, 20, 60, 0.2);
+  }
+
+  50% {
+    text-shadow:
+      0 0 6px rgba(220, 20, 60, 0.5),
+      0 0 14px rgba(220, 20, 60, 0.3);
+  }
 }
 
 .plan-badge {
@@ -166,7 +190,7 @@
   font-size: 0.85rem;
   font-weight: 600;
   cursor: pointer;
-  transition: transform var(--transition-normal), background-color var(--transition-normal), border-color var(--transition-normal), color var(--transition-normal), box-shadow var(--transition-normal);
+  transition: transform 0.2s ease, background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
 }
 
 .plan-select-button:hover {
@@ -194,8 +218,110 @@
   }
 }
 
-@keyframes shine {
-  to {
-    background-position: 200% center;
-  }
+/* Removed plan-info-button - rows are now clickable */
+
+.info-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.9);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 2rem;
+}
+
+.info-modal {
+  background: rgba(20, 20, 20, 0.92);
+  border-radius: 16px;
+  padding: 2rem;
+  max-width: 1100px;
+  width: 92vw;
+  max-height: 92vh;
+  position: relative;
+  border: 1px solid rgba(220, 20, 60, 0.3);
+  backdrop-filter: blur(10px);
+  overflow: auto;
+}
+
+.info-modal-close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: rgba(220, 20, 60, 0.2);
+  border: 1px solid rgba(220, 20, 60, 0.5);
+  color: white;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  font-size: 1.5rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.info-modal-close:hover {
+  background: rgba(220, 20, 60, 0.8);
+  transform: scale(1.1);
+}
+
+.info-modal-media {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+
+.info-modal-media img {
+  max-width: 380px;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  border-radius: 12px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
+  background: rgba(255, 255, 255, 0.05);
+  padding: 0.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.info-placeholder {
+  width: 100%;
+  height: 50vh;
+  display: grid;
+  place-items: center;
+  color: rgba(255, 255, 255, 0.85);
+  background: radial-gradient(ellipse at center, rgba(220, 20, 60, 0.2), rgba(0, 0, 0, 0.6));
+  border-radius: 8px;
+}
+
+.info-modal-body {
+  margin-top: 1.5rem;
+}
+
+.info-summary {
+  color: rgba(255, 255, 255, 0.85);
+  margin-bottom: 1rem;
+}
+
+.info-list {
+  list-style: none;
+  padding: 0;
+  margin: 1rem 0;
+  text-align: left;
+}
+
+.info-list li {
+  padding: 0.5rem 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.info-note {
+  color: rgba(255, 255, 255, 0.7);
+  margin-top: 1rem;
 }
