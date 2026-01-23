@@ -277,16 +277,87 @@
   margin-bottom: 2rem;
 }
 
-.info-modal-media img {
-  max-width: 380px;
+.info-modal-table-wrapper {
   width: 100%;
-  height: auto;
-  object-fit: contain;
+  overflow-x: auto;
+  margin-bottom: 2rem;
   border-radius: 12px;
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
-  background: rgba(255, 255, 255, 0.05);
-  padding: 0.5rem;
   border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(0, 0, 0, 0.3);
+}
+
+.modal-plans-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 500px;
+}
+
+.modal-plans-table th {
+  text-align: left;
+  padding: 1rem;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: rgba(255, 255, 255, 0.6);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.modal-plans-table td {
+  padding: 1rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 0.9rem;
+  vertical-align: middle;
+}
+
+.modal-plans-table tr:last-child td {
+  border-bottom: none;
+}
+
+.modal-plans-table tr {
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.modal-plans-table tr:hover {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.modal-plans-table tr.active-row {
+  background: rgba(220, 20, 60, 0.15);
+  border-left: 3px solid #dc143c;
+}
+
+.modal-plan-name {
+  font-weight: 600;
+  color: #fff !important;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.modal-popular-badge {
+  font-size: 0.6rem;
+  background: #dc143c;
+  color: white;
+  padding: 0.1rem 0.4rem;
+  border-radius: 10px;
+  text-transform: uppercase;
+}
+
+.modal-plan-price {
+  font-weight: 600;
+  color: #dc143c !important;
+}
+
+.modal-plan-features {
+  font-size: 0.8rem !important;
+  color: rgba(255, 255, 255, 0.5) !important;
+  max-width: 200px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .info-placeholder {
@@ -324,4 +395,54 @@
 .info-note {
   color: rgba(255, 255, 255, 0.7);
   margin-top: 1rem;
+}
+
+/* Detailed Comparison Table Styles */
+.comparison-title {
+  color: #fff;
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+  text-align: center;
+  font-weight: 300;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.comparison-table .table-section-header td {
+  background: rgba(220, 20, 60, 0.2);
+  color: #fff;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  padding: 0.8rem 1rem;
+  font-size: 0.85rem;
+  text-align: left;
+  border-bottom: 1px solid rgba(220, 20, 60, 0.4);
+}
+
+.comp-service-name {
+  text-align: left;
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.9);
+  padding: 0.8rem 1rem !important;
+  min-width: 200px;
+}
+
+.comp-check {
+  text-align: center;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.9rem;
+  min-width: 100px;
+}
+
+.highlight-col {
+  background: rgba(220, 20, 60, 0.15) !important;
+  color: #fff !important;
+  font-weight: 500;
+  border-left: 1px solid rgba(220, 20, 60, 0.3);
+  border-right: 1px solid rgba(220, 20, 60, 0.3);
+}
+
+.modal-plans-table.comparison-table tr:hover {
+  background: rgba(255, 255, 255, 0.03);
 }

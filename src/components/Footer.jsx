@@ -45,6 +45,17 @@ const Footer = ({ isVip = false }) => {
             </div>
             <div className="footer-bottom">
                 <p>&copy; {new Date().getFullYear()} Shining Wheels. All rights reserved.</p>
+                <div className="footer-developer">
+                    <span className="developer-text">Desarrollado por</span>
+                    <div className="bluepixel-brand">
+                        <img
+                            src="/bluepixel-logo.jpg"
+                            alt="BluePixel Logo"
+                            className="bluepixel-logo"
+                        />
+                        <span className="bluepixel-name">Blue Pixel</span>
+                    </div>
+                </div>
             </div>
         </footer>
     );

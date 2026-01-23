@@ -6,16 +6,16 @@ const VipPhilosophy = () => {
         <section className="vip-philosophy">
             <div className="philosophy-container">
                 <div className="philosophy-text">
-                    <h2 className="philosophy-title">¿Por qué hacemos esto?</h2>
+                    <h2 className="philosophy-title">Why do we do this?</h2>
                     <p className="philosophy-p">
-                        Nacimos de la pasión por los detalles que otros ignoran. <br />
-                        No nos importa el tiempo, nos importa el resultado. <br />
-                        Creamos el nivel VIP porque sabemos que hay coches que no son solo máquinas,
-                        sino extensiones del alma de sus dueños.
+                        We were born from a passion for the details that others overlook. <br />
+                        We don't care about time, we care about results. <br />
+                        We created the VIP level because we know there are cars that aren't just machines,
+                        but extensions of their owners' souls.
                     </p>
                     <div className="philosophy-thanks">
-                        <h3>Gracias por confiar en nosotros.</h3>
-                        <p>Atentamente, el equipo de Shining Wheels.</p>
+                        <h3>Thank you for trusting us.</h3>
+                        <p>Sincerely, the Shining Wheels team.</p>
                     </div>
                 </div>
             </div>

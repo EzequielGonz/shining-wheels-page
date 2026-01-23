@@ -45,6 +45,30 @@ h6 {
   font-family: var(--font-headings);
 }
 
+/* Unified Typography - Ensure consistency across all elements */
+button,
+input,
+select,
+textarea,
+label {
+  font-family: var(--font-body);
+}
+
+/* Modal and popup typography */
+.info-modal,
+.cart-drawer,
+.mobile-menu,
+.language-dropdown {
+  font-family: var(--font-body);
+}
+
+/* Subtitles and captions */
+.subtitle,
+.caption,
+p {
+  font-family: var(--font-body);
+}
+
 .App {
   position: relative;
   overflow-x: hidden;

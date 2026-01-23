@@ -242,3 +242,67 @@
     border-top-color: rgba(212, 175, 55, 0.15);
     color: rgba(212, 175, 55, 0.4);
 }
+
+/* BluePixel Developer Credit Section */
+.footer-developer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.developer-text {
+    font-family: 'Questrial', sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: #292929;
+    letter-spacing: normal;
+    line-height: normal;
+}
+
+.bluepixel-brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.bluepixel-logo {
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+    border-radius: 4px;
+}
+
+.bluepixel-name {
+    font-family: 'Questrial', sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: #292929;
+    letter-spacing: normal;
+    line-height: normal;
+}
+
+/* VIP mode styles for BluePixel section */
+.footer-vip .developer-text,
+.footer-vip .bluepixel-name {
+    color: rgba(212, 175, 55, 0.6);
+}
+
+@media (max-width: 768px) {
+    .footer-developer {
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .developer-text,
+    .bluepixel-name {
+        font-size: 16px;
+    }
+
+    .bluepixel-logo {
+        width: 32px;
+        height: 32px;
+    }
+}

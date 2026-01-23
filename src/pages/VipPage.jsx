@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import VipHero from '../components/VipHero';
-import VipSection from '../components/VipSection';
+import ServiceLevels from '../components/ServiceLevels';
 import VipUltimateService from '../components/VipUltimateService';
 import VipPhilosophy from '../components/VipPhilosophy';
 import BackgroundAnimation from '../components/BackgroundAnimation';
@@ -24,7 +24,9 @@ const VipPage = () => {
             <Header />
             <main>
                 <VipHero />
-                <VipSection />
+                <section id="vip-plans">
+                    <ServiceLevels isVip={true} />
+                </section>
                 <VipUltimateService />
                 <VipPhilosophy />
             </main>

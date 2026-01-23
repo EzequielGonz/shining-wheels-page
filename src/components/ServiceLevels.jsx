@@ -271,11 +271,69 @@ const ServiceLevels = ({ isVip = false }) => {
             <button className="info-modal-close" onClick={handleClosePopup}>
               ×
             </button>
-            <div className="info-modal-media">
-              <img
-                src="/TABLA.jpeg"
-                alt="Service Levels Table"
-              />
+            <div className="info-modal-table-wrapper">
+              <h3 className="comparison-title">Comparación de servicios por paquete:</h3>
+              <table className="modal-plans-table comparison-table">
+                <thead>
+                  <tr>
+                    <th>Servicio</th>
+                    <th>Essentials</th>
+                    <th>Standard</th>
+                    <th>Pro</th>
+                    <th>First Class</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {[
+                    {
+                      category: "EXTERIOR CARE (Cuidado Exterior) - Exterior Process",
+                      rows: [
+                        { service: "Multi-Stage Exterior Wash", essentials: "✓", standard: "✓", pro: "✓", firstClass: "✓" },
+                        { service: "Foam Wash & Controlled Rinse", essentials: "✓", standard: "✓", pro: "✓", firstClass: "✓" },
+                        { service: "Dirt-Safe Pre-Cleaning (No Contact)", essentials: "✓", standard: "✓", pro: "✓ (Acid or Alkaline)", firstClass: "✓ (Multi-Stage Acid + Alkali)" },
+                        { service: "Advanced Chemical System (Multi-Stage)", essentials: "—", standard: "✓", pro: "✓", firstClass: "✓" },
+                        { service: "Wheel & Tire Cleaning", essentials: "✓", standard: "✓ (Deep Clean)", pro: "✓ (Deep Clean + Dressing)", firstClass: "✓ (Deep Clean + Coating)" },
+                        { service: "Plastic & Exterior Trim Care", essentials: "—", standard: "✓ (Selected Areas)", pro: "✓ (Dressing)", firstClass: "✓ (Coating)" },
+                        { service: "Paint Decontamination Removal", essentials: "—", standard: "—", pro: "✓ (Chemical)", firstClass: "✓ (Chemical + Mechanical)" },
+                        { service: "Exterior Paint Protection", essentials: "✓ (Quick Seal)", standard: "✓ (Enhanced Seal)", pro: "✓ (Advanced Seal)", firstClass: "✓ (1-Step Coating)" },
+                      ]
+                    },
+                    {
+                      category: "GLASS & VISIBILITY (Vidrios y Visibilidad) - Glass Care",
+                      rows: [
+                        { service: "Streak-Free Glass Cleaning", essentials: "✓", standard: "✓ (Deep)", pro: "✓ (Deep + Anti-Fog)", firstClass: "✓ (Deep + Anti-Fog + Protection)" },
+                      ]
+                    },
+                    {
+                      category: "INTERIOR CARE (Cuidado Interior) - Interior Process",
+                      rows: [
+                        { service: "Interior Vacuum & Dust Removal", essentials: "✓", standard: "✓", pro: "✓", firstClass: "✓" },
+                        { service: "Interior Surface Sanitization", essentials: "✓", standard: "✓", pro: "✓", firstClass: "✓ (Kills 99% of Bacteria)" },
+                        { service: "Precision Steam Cleaning", essentials: "—", standard: "✓", pro: "✓", firstClass: "✓" },
+                        { service: "Carpet & Upholstery Deep Cleaning", essentials: "—", standard: "—", pro: "✓ (Extractor System)", firstClass: "✓ (Extractor System)" },
+                        { service: "Leather Cleaning & Conditioning", essentials: "—", standard: "—", pro: "✓", firstClass: "✓" },
+                        { service: "Interior Surface Protection", essentials: "—", standard: "—", pro: "—", firstClass: "✓" },
+                        { service: "Fabric Protection", essentials: "—", standard: "—", pro: "—", firstClass: "✓ (Water Repellent Finish)" },
+                      ]
+                    }
+                  ].map((section, sIdx) => (
+                    <React.Fragment key={sIdx}>
+                      <tr className="table-section-header">
+                        <td colSpan="5">{section.category}</td>
+                      </tr>
+                      {section.rows.map((row, rIdx) => (
+                        <tr key={rIdx} className={selectedPlan?.id === 'essentials' && rIdx === 0 ? '' : ''}> {/* Keeping hover effect only */}
+                          <td className="comp-service-name">{row.service}</td>
+                          <td className={`comp-check ${selectedPlan?.id === 'essentials' ? 'highlight-col' : ''}`}>{row.essentials}</td>
+                          <td className={`comp-check ${selectedPlan?.id === 'standard' ? 'highlight-col' : ''}`}>{row.standard}</td>
+                          <td className={`comp-check ${selectedPlan?.id === 'pro' ? 'highlight-col' : ''}`}>{row.pro}</td>
+                          <td className={`comp-check ${selectedPlan?.id === 'first-class' ? 'highlight-col' : ''}`}>{row.firstClass}</td>
+                        </tr>
+                      ))}
+                    </React.Fragment>
+                  ))}
+                </tbody>
+              </table>
             </div>
             <div className="info-modal-body">
               {(() => {

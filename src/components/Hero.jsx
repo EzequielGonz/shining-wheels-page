@@ -26,6 +26,9 @@ const Hero = () => {
           <h2 className="hero-location">
             MIAMI
           </h2>
+          <p className="hero-tagline">
+            where perfection is standard
+          </p>
         </div>
 
         <div className="hero-buttons">

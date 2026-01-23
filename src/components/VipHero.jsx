@@ -15,14 +15,14 @@ const VipHero = () => {
             <div className="vip-hero-content">
                 <div className="vip-hero-badge">
                     <FaCrown className="vip-badge-icon" />
-                    <span>Acceso Exclusivo</span>
+                    <span>Exclusive Access</span>
                 </div>
                 <h1 className="vip-hero-title">
                     The Gold Standard <br />
                     <span>of Automotive Care</span>
                 </h1>
                 <p className="vip-hero-subtitle">
-                    Una experiencia diseñada solo para quienes no aceptan menos de la perfección.
+                    An experience designed only for those who accept nothing less than perfection.
                 </p>
                 <div className="vip-hero-scroll">
                     <div className="scroll-line"></div>
