@@ -39,7 +39,16 @@
 .footer-logo-wrapper {
     margin-bottom: 2rem;
     display: flex;
+    align-items: center;
     justify-content: flex-start;
+    gap: 1rem;
+}
+
+.footer-wheel-icon {
+    height: 50px;
+    width: auto;
+    object-fit: contain;
+    flex-shrink: 0;
 }
 
 .footer-logo-wrapper .logo-container {
@@ -243,23 +252,24 @@
     color: rgba(212, 175, 55, 0.4);
 }
 
-/* BluePixel Developer Credit Section */
-.footer-developer {
+/* BluePixel - Mini sección "Desarrollado por BluePixel" */
+.footer-bluepixel-section {
+    background: #FFF8F4;
+    padding: 1.25rem 2rem;
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 8px;
-    margin-top: 1.5rem;
+    gap: 10px;
     flex-wrap: wrap;
+    margin-top: 0;
 }
 
-.developer-text {
+.bluepixel-section-text {
     font-family: 'Questrial', sans-serif;
-    font-size: 20px;
-    font-weight: 700;
+    font-size: 1rem;
+    font-weight: 600;
     color: #292929;
     letter-spacing: normal;
-    line-height: normal;
 }
 
 .bluepixel-brand {
@@ -269,36 +279,35 @@
 }
 
 .bluepixel-logo {
-    width: 40px;
-    height: 40px;
+    width: 36px;
+    height: 36px;
     object-fit: contain;
     border-radius: 4px;
 }
 
 .bluepixel-name {
     font-family: 'Questrial', sans-serif;
-    font-size: 20px;
+    font-size: 1.1rem;
     font-weight: 700;
     color: #292929;
     letter-spacing: normal;
-    line-height: normal;
 }
 
-/* VIP mode styles for BluePixel section */
-.footer-vip .developer-text,
-.footer-vip .bluepixel-name {
-    color: rgba(212, 175, 55, 0.6);
+/* La sección BluePixel siempre usa #FFF8F4 (también en modo VIP) */
+.footer .footer-bluepixel-section {
+    background: #FFF8F4;
 }
 
 @media (max-width: 768px) {
-    .footer-developer {
+    .footer-bluepixel-section {
         flex-direction: column;
-        gap: 12px;
+        gap: 8px;
+        padding: 1rem 1.5rem;
     }
 
-    .developer-text,
+    .bluepixel-section-text,
     .bluepixel-name {
-        font-size: 16px;
+        font-size: 0.95rem;
     }
 
     .bluepixel-logo {

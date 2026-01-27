@@ -8,6 +8,11 @@ const Footer = ({ isVip = false }) => {
             <div className="footer-container">
                 <div className="footer-brand">
                     <div className="footer-logo-wrapper">
+                        <img
+                            src="/loader.png"
+                            alt="Shining Wheels"
+                            className="footer-wheel-icon"
+                        />
                         <Logo />
                     </div>
                     <p className="footer-desc">
@@ -45,16 +50,16 @@ const Footer = ({ isVip = false }) => {
             </div>
             <div className="footer-bottom">
                 <p>&copy; {new Date().getFullYear()} Shining Wheels. All rights reserved.</p>
-                <div className="footer-developer">
-                    <span className="developer-text">Desarrollado por</span>
-                    <div className="bluepixel-brand">
-                        <img
-                            src="/bluepixel-logo.jpg"
-                            alt="BluePixel Logo"
-                            className="bluepixel-logo"
-                        />
-                        <span className="bluepixel-name">Blue Pixel</span>
-                    </div>
+            </div>
+            <div className="footer-bluepixel-section">
+                <span className="bluepixel-section-text">Desarrollado por</span>
+                <div className="bluepixel-brand">
+                    <img
+                        src="https://i.ibb.co/4nmtSKCW/bluepixelbg.png"
+                        alt="BluePixel Logo"
+                        className="bluepixel-logo"
+                    />
+                    <span className="bluepixel-name">BluePixel</span>
                 </div>
             </div>
         </footer>

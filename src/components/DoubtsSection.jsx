@@ -59,11 +59,11 @@ const DoubtsSection = () => {
 
                 <div className="doubts-form-wrapper scroll-reveal-fade" ref={formRef}>
                     {!isSent ? (
-                        <div className={`doubts-form-step step-${step}`}>
+                        <>
                             <div className="progress-bar">
                                 <div className="progress" style={{ width: `${(step / 3) * 100}%` }}></div>
                             </div>
-
+                            <div className={`doubts-form-step step-${step}`}>
                             {step === 1 && (
                                 <div className="input-group">
                                     <label htmlFor="doubt">How can we help you?</label>
@@ -147,7 +147,8 @@ const DoubtsSection = () => {
                             <div className="step-indicator">
                                 Step {step} of 3
                             </div>
-                        </div>
+                            </div>
+                        </>
                     ) : (
                         <div className="doubts-success">
                             <div className="success-icon">

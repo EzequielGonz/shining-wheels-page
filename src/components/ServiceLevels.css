@@ -34,6 +34,7 @@
 .plans-table-wrapper {
   margin-top: 3rem;
   overflow-x: auto;
+  overflow-y: hidden;
   border-radius: 16px;
   border: 1px solid rgba(255, 255, 255, 0.08);
   background: rgba(0, 0, 0, 0.22);
@@ -78,7 +79,7 @@
 
 .plans-table tbody tr.clickable-row:hover td {
   background: rgba(220, 20, 60, 0.08);
-  transform: scale(1.005);
+  transform: scale(1.002);
 }
 
 .plans-table tbody tr.clickable-row:active td {
