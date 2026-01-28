@@ -1,10 +1,7 @@
 .footer {
-    padding: 8rem 2rem 4rem;
-    /* More top padding for breathing room */
+    padding: 8rem 2rem 0;
     background: transparent;
-    /* Seamless blend */
     position: relative;
-    /* No border-top to avoid the "cut" */
 }
 
 /* Optional: subtle gradient at the very bottom to anchor the page, 
@@ -162,14 +159,23 @@
     /* Playful interaction */
 }
 
+/* Franja inferior: copyright + BluePixel. Fondo #FFF8F4 a ancho completo y hasta abajo */
+.footer-bottom-strip {
+    background: #FFF8F4;
+    margin-top: 6rem;
+    margin-left: -2rem;
+    margin-right: -2rem;
+    width: calc(100% + 4rem);
+    padding: 2rem 2rem 2.5rem;
+}
+
 .footer-bottom {
     max-width: 1400px;
-    margin: 6rem auto 0;
+    margin: 0 auto 1.75rem;
     padding-top: 2rem;
-    border-top: 1px solid rgba(255, 255, 255, 0.05);
-    /* Very subtle separator for copyright */
+    border-top: 1px solid rgba(0, 0, 0, 0.08);
     text-align: center;
-    color: rgba(255, 255, 255, 0.2);
+    color: #292929;
     font-size: 0.8rem;
     letter-spacing: 1px;
     text-transform: uppercase;
@@ -177,7 +183,18 @@
 
 @media (max-width: 768px) {
     .footer {
-        padding: 6rem 1.5rem 3rem;
+        padding: 6rem 1.5rem 0;
+    }
+
+    .footer-bottom-strip {
+        margin-left: -1.5rem;
+        margin-right: -1.5rem;
+        width: calc(100% + 3rem);
+        padding: 2rem 1.5rem 2rem;
+    }
+
+    .footer-bottom {
+        margin-bottom: 1.25rem;
     }
 
     .footer-container {
@@ -245,23 +262,26 @@
     box-shadow: 0 0 15px rgba(212, 175, 55, 0.4);
 }
 
+.footer-vip .footer-bottom-strip {
+    background: #FFF8F4;
+}
+
 .footer-vip .footer-bottom {
     position: relative;
     z-index: 1;
-    border-top-color: rgba(212, 175, 55, 0.15);
-    color: rgba(212, 175, 55, 0.4);
+    border-top-color: rgba(0, 0, 0, 0.08);
+    color: #292929;
 }
 
 /* BluePixel - Mini sección "Desarrollado por BluePixel" */
 .footer-bluepixel-section {
-    background: #FFF8F4;
-    padding: 1.25rem 2rem;
+    background: transparent;
+    padding: 0 0 0;
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 10px;
     flex-wrap: wrap;
-    margin-top: 0;
 }
 
 .bluepixel-section-text {
@@ -293,16 +313,15 @@
     letter-spacing: normal;
 }
 
-/* La sección BluePixel siempre usa #FFF8F4 (también en modo VIP) */
+/* BluePixel dentro de la franja #FFF8F4 (sin fondo propio) */
 .footer .footer-bluepixel-section {
-    background: #FFF8F4;
+    background: transparent;
 }
 
 @media (max-width: 768px) {
     .footer-bluepixel-section {
         flex-direction: column;
         gap: 8px;
-        padding: 1rem 1.5rem;
     }
 
     .bluepixel-section-text,

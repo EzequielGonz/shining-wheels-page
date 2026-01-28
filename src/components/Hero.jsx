@@ -1,7 +1,9 @@
 import React from 'react';
+import { useLanguage } from '../context/LanguageContext';
 import './Hero.css';
 
 const Hero = () => {
+  const { t } = useLanguage();
   return (
     <section className="hero" id="home">
       <div className="hero-video-container">
@@ -13,7 +15,6 @@ const Hero = () => {
           preload="auto"
         >
           <source src="/videoherocarwash.mp4" type="video/mp4" />
-          {/* Fallback si no hay video */}
         </video>
         <div className="hero-video-overlay"></div>
       </div>
@@ -21,13 +22,13 @@ const Hero = () => {
       <div className="hero-content">
         <div className="hero-text-wrapper">
           <h1 className="hero-title">
-            Premium Car Detailing
+            {t('hero.title')}
           </h1>
           <h2 className="hero-location">
-            MIAMI
+            {t('hero.location')}
           </h2>
           <p className="hero-tagline">
-            where perfection is standard
+            {t('hero.tagline')}
           </p>
         </div>
 
@@ -38,11 +39,11 @@ const Hero = () => {
             rel="noopener noreferrer"
             className="hero-button-solid"
           >
-            Book Appointment
+            {t('hero.bookAppointment')}
           </a>
-          <button className="hero-button-outline">
-            View Services
-          </button>
+          <a href="#services" className="hero-button-outline">
+            {t('hero.viewServices')}
+          </a>
         </div>
 
         <div className="scroll-indicator">

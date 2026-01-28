@@ -23,11 +23,15 @@ export const CartProvider = ({ children }) => {
 
   const addPlan = (plan) => {
     setCartItems((prevItems) => {
-      // Remove any existing plan
       const filteredItems = prevItems.filter((item) => item.type !== 'plan');
       return [...filteredItems, { ...plan, type: 'plan', id: `plan-${plan.name}` }];
     });
     setIsCartOpen(true);
+  };
+
+  const setServicePlan = (payload) => {
+    const price = typeof payload.price === 'number' ? `$${payload.price}` : payload.price;
+    addPlan({ ...payload, price, name: payload.name });
   };
 
   const toggleAddon = (addon) => {
@@ -65,6 +69,7 @@ export const CartProvider = ({ children }) => {
         isCartOpen,
         setIsCartOpen,
         addPlan,
+        setServicePlan,
         toggleAddon,
         removeFromCart,
         clearCart,

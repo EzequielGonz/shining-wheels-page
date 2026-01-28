@@ -1,8 +1,10 @@
 import React from 'react';
+import { useLanguage } from '../context/LanguageContext';
 import './VipHero.css';
 import { FaCrown } from 'react-icons/fa';
 
 const VipHero = () => {
+    const { t } = useLanguage();
     return (
         <section className="vip-hero">
             <div className="vip-hero-mesh"></div>
@@ -15,14 +17,14 @@ const VipHero = () => {
             <div className="vip-hero-content">
                 <div className="vip-hero-badge">
                     <FaCrown className="vip-badge-icon" />
-                    <span>Exclusive Access</span>
+                    <span>{t('vipHero.badge')}</span>
                 </div>
                 <h1 className="vip-hero-title">
-                    The Gold Standard <br />
-                    <span>of Automotive Care</span>
+                    {t('vipHero.title')} <br />
+                    <span>{t('vipHero.titleSpan')}</span>
                 </h1>
                 <p className="vip-hero-subtitle">
-                    An experience designed only for those who accept nothing less than perfection.
+                    {t('vipHero.subtitle')}
                 </p>
                 <div className="vip-hero-scroll">
                     <div className="scroll-line"></div>

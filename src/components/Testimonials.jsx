@@ -1,26 +1,16 @@
 import React, { useEffect, useRef, useState } from 'react';
+import { useLanguage } from '../context/LanguageContext';
 import './Testimonials.css';
 
 const Testimonials = () => {
+    const { t } = useLanguage();
     const [isVisible, setIsVisible] = useState(false);
     const sectionRef = useRef(null);
 
-    const testimonials = [
-        {
-            text: "The attention to detail is simply unmatched. My car looks better than the day I drove it off the lot.",
-            name: "James Anderson",
-            detail: "Porsche 911 GT3"
-        },
-        {
-            text: "Professional, punctual, and perfectionist. Exactly what you want when handling a luxury vehicle.",
-            name: "Sarah Miller",
-            detail: "Range Rover Autobiography"
-        },
-        {
-            text: "I've tried many detailers, but this level of craftsmanship is rare. Truly world-class service.",
-            name: "Michael Chen",
-            detail: "Tesla Model S Plaid"
-        }
+    const testimonialKeys = [
+        { text: 'testimonials.t1', name: 'testimonials.t1Name', detail: 'testimonials.t1Detail' },
+        { text: 'testimonials.t2', name: 'testimonials.t2Name', detail: 'testimonials.t2Detail' },
+        { text: 'testimonials.t3', name: 'testimonials.t3Name', detail: 'testimonials.t3Detail' },
     ];
 
     useEffect(() => {
@@ -59,14 +49,14 @@ const Testimonials = () => {
         <section className="testimonials-section" ref={sectionRef}>
             <div className="testimonials-container">
                 <h2 className={`testimonials-title ${isVisible ? 'animated' : 'animate-on-scroll'}`}>
-                    What Clients Say
+                    {t('testimonials.title')}
                 </h2>
 
                 <div className="testimonials-grid">
-                    {testimonials.map((item, index) => (
+                    {testimonialKeys.map((item, index) => (
                         <div
                             key={index}
-                            className={`testimonial-card`}
+                            className="testimonial-card"
                             style={{
                                 opacity: isVisible ? 1 : 0,
                                 transform: isVisible ? 'translateY(0)' : 'translateY(30px)',
@@ -76,10 +66,10 @@ const Testimonials = () => {
                             <div className="testimonial-stars">
                                 {[...Array(5)].map((_, i) => <StarIcon key={i} />)}
                             </div>
-                            <p className="testimonial-text">"{item.text}"</p>
+                            <p className="testimonial-text">"{t(item.text)}"</p>
                             <div className="testimonial-author">
-                                <span className="author-name">{item.name}</span>
-                                <span className="author-detail">{item.detail}</span>
+                                <span className="author-name">{t(item.name)}</span>
+                                <span className="author-detail">{t(item.detail)}</span>
                             </div>
                         </div>
                     ))}
@@ -97,7 +87,7 @@ const Testimonials = () => {
                         className="review-btn"
                     >
                         <PencilIcon />
-                        <span>Leave a Review</span>
+                        <span>{t('testimonials.leaveReview')}</span>
                     </a>
                 </div>
             </div>

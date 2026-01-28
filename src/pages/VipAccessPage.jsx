@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import BackgroundAnimation from '../components/BackgroundAnimation';
+import { useLanguage } from '../context/LanguageContext';
 import './VipAccessPage.css';
 
 const VipAccessPage = () => {
+    const { t } = useLanguage();
     const [password, setPassword] = useState('');
     const [error, setError] = useState(false);
     const navigate = useNavigate();
@@ -16,7 +18,6 @@ const VipAccessPage = () => {
         } else {
             setError(true);
             setPassword('');
-            // Reset error after a brief animation
             setTimeout(() => setError(false), 500);
         }
     };
@@ -32,14 +33,14 @@ const VipAccessPage = () => {
                             <path d="M2 17h20" />
                         </svg>
                     </div>
-                    <h1>Are you part of the VIP group?</h1>
-                    <p>Enter your access key to continue</p>
+                    <h1>{t('vipAccess.title')}</h1>
+                    <p>{t('vipAccess.subtitle')}</p>
 
                     <form onSubmit={handleSubmit} className={`access-form ${error ? 'shake' : ''}`}>
                         <div className="input-wrapper">
                             <input
                                 type="password"
-                                placeholder="Access Key"
+                                placeholder={t('vipAccess.placeholder')}
                                 value={password}
                                 onChange={(e) => setPassword(e.target.value)}
                                 autoFocus
@@ -50,11 +51,11 @@ const VipAccessPage = () => {
                                 </svg>
                             </button>
                         </div>
-                        {error && <span className="error-text">Access Denied</span>}
+                        {error && <span className="error-text">{t('vipAccess.error')}</span>}
                     </form>
 
                     <button className="back-link" onClick={() => navigate('/')}>
-                        Back to Home
+                        {t('vipAccess.backHome')}
                     </button>
                 </div>
             </div>

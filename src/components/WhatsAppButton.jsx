@@ -1,9 +1,11 @@
 import React from 'react';
+import { useLanguage } from '../context/LanguageContext';
 import './WhatsAppButton.css';
 
 const WhatsAppButton = () => {
+  const { t } = useLanguage();
   const phoneNumber = '13054950045';
-  const message = 'Hello, I have questions';
+  const message = t('whatsapp.message');
   const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
 
   return (

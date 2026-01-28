@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import useScrollReveal from '../hooks/useScrollReveal';
+import { useLanguage } from '../context/LanguageContext';
 import './DoubtsSection.css';
 
 const DoubtsSection = () => {
+    const { t } = useLanguage();
     const [step, setStep] = useState(1);
     const [formData, setFormData] = useState({
         doubt: '',
@@ -37,8 +39,10 @@ const DoubtsSection = () => {
     };
 
     const handleFinalSubmit = () => {
-        // Generate WhatsApp message
-        const message = `Hello! I have a question:\n\n*Question:* ${formData.doubt}\n*Name:* ${formData.name}\n*Phone:* ${formData.phone}`;
+        const qLabel = t('doubts.messageQuestion');
+        const nLabel = t('doubts.messageName');
+        const pLabel = t('doubts.messagePhone');
+        const message = `Hello! I have a question:\n\n*${qLabel}:* ${formData.doubt}\n*${nLabel}:* ${formData.name}\n*${pLabel}:* ${formData.phone}`;
         const whatsappUrl = `https://wa.me/+13054950045?text=${encodeURIComponent(message)}`;
 
         setIsSent(true);
@@ -53,8 +57,8 @@ const DoubtsSection = () => {
         <section className="doubts-section" id="contacto">
             <div className="doubts-container">
                 <div className="doubts-header scroll-reveal-fade-up" ref={headerRef}>
-                    <h2>Have Questions?</h2>
-                    <p>We are here to help. Leave your query and we'll contact you in minutes.</p>
+                    <h2>{t('doubts.title')}</h2>
+                    <p>{t('doubts.subtitle')}</p>
                 </div>
 
                 <div className="doubts-form-wrapper scroll-reveal-fade" ref={formRef}>
@@ -66,12 +70,12 @@ const DoubtsSection = () => {
                             <div className={`doubts-form-step step-${step}`}>
                             {step === 1 && (
                                 <div className="input-group">
-                                    <label htmlFor="doubt">How can we help you?</label>
+                                    <label htmlFor="doubt">{t('doubts.helpYou')}</label>
                                     <div className="input-with-arrow">
                                         <textarea
                                             id="doubt"
                                             name="doubt"
-                                            placeholder="Type your question here..."
+                                            placeholder={t('doubts.placeholderQuestion')}
                                             value={formData.doubt}
                                             onChange={handleInputChange}
                                             onKeyPress={handleKeyPress}
@@ -92,13 +96,13 @@ const DoubtsSection = () => {
 
                             {step === 2 && (
                                 <div className="input-group">
-                                    <label htmlFor="name">What is your name?</label>
+                                    <label htmlFor="name">{t('doubts.yourName')}</label>
                                     <div className="input-with-arrow">
                                         <input
                                             type="text"
                                             id="name"
                                             name="name"
-                                            placeholder="Your full name"
+                                            placeholder={t('doubts.placeholderName')}
                                             value={formData.name}
                                             onChange={handleInputChange}
                                             onKeyPress={handleKeyPress}
@@ -119,13 +123,13 @@ const DoubtsSection = () => {
 
                             {step === 3 && (
                                 <div className="input-group">
-                                    <label htmlFor="phone">Leave us your number</label>
+                                    <label htmlFor="phone">{t('doubts.yourNumber')}</label>
                                     <div className="input-with-arrow">
                                         <input
                                             type="tel"
                                             id="phone"
                                             name="phone"
-                                            placeholder="+1 (123) 456-7890"
+                                            placeholder={t('doubts.placeholderPhone')}
                                             value={formData.phone}
                                             onChange={handleInputChange}
                                             onKeyPress={handleKeyPress}
@@ -145,7 +149,7 @@ const DoubtsSection = () => {
                             )}
 
                             <div className="step-indicator">
-                                Step {step} of 3
+                                {t('doubts.stepOf', { step })}
                             </div>
                             </div>
                         </>
@@ -156,8 +160,8 @@ const DoubtsSection = () => {
                                     <polyline points="20 6 9 17 4 12" />
                                 </svg>
                             </div>
-                            <h3>Message Sent!</h3>
-                            <p>Redirecting you to WhatsApp to finalize your inquiry...</p>
+                            <h3>{t('doubts.messageSent')}</h3>
+                            <p>{t('doubts.redirecting')}</p>
                         </div>
                     )}
                 </div>

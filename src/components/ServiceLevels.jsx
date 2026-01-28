@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { useCart } from '../context/CartContext';
+import { useLanguage } from '../context/LanguageContext';
 import useScrollReveal from '../hooks/useScrollReveal';
 import './ServiceLevels.css';
 
 const ServiceLevels = ({ isVip = false }) => {
+  const { t } = useLanguage();
   const { addPlan } = useCart();
   const [selectedPlan, setSelectedPlan] = useState(null);
   const [imageError, setImageError] = useState(false);
@@ -24,51 +26,10 @@ const ServiceLevels = ({ isVip = false }) => {
   };
 
   const plans = [
-    {
-      id: 'essentials',
-      name: 'Essentials',
-      description: 'Basic exterior cleaning and interior vacuum',
-      features: [
-        'Full exterior wash',
-        'Wheel cleaning',
-        'Interior vacuum',
-        'Dashboard wipe-down'
-      ]
-    },
-    {
-      id: 'standard',
-      name: 'Standard',
-      description: 'Full service with interior detailing',
-      features: [
-        'Everything in Essentials',
-        'Window cleaning',
-        'Tire dressing',
-        'Door jambs cleaning'
-      ],
-      popular: true
-    },
-    {
-      id: 'pro',
-      name: 'Pro',
-      description: 'Premium service with protection',
-      features: [
-        'Everything in Standard',
-        'Paint treatment',
-        'Interior protection',
-        'Leather detailing'
-      ]
-    },
-    {
-      id: 'first-class',
-      name: 'First Class',
-      description: 'Luxury full detailing service',
-      features: [
-        'Everything in Pro',
-        'Ceramic coating',
-        'Engine bay service',
-        'Odor treatment'
-      ]
-    }
+    { id: 'essentials', nameKey: 'plans.essentials', descKey: 'serviceLevels.descEssentials', featKeys: ['feat1','feat2','feat3','feat4'] },
+    { id: 'standard', nameKey: 'plans.standard', descKey: 'serviceLevels.descStandard', featKeys: ['feat5','feat6','feat7','feat8'], popular: true },
+    { id: 'pro', nameKey: 'plans.pro', descKey: 'serviceLevels.descPro', featKeys: ['feat9','feat10','feat11','feat12'] },
+    { id: 'first-class', nameKey: 'plans.firstClass', descKey: 'serviceLevels.descFirstClass', featKeys: ['feat13','feat14','feat15','feat16'] }
   ];
 
   const planInfo = {
@@ -164,7 +125,10 @@ const ServiceLevels = ({ isVip = false }) => {
 
   const handleSelectPlan = (plan) => {
     const price = getPrice(plan.id);
-    addPlan({ ...plan, price });
+    const name = t(plan.nameKey);
+    const description = t(plan.descKey);
+    const features = plan.featKeys.map((k) => t(`serviceLevels.${k}`));
+    addPlan({ ...plan, name, description, features, price });
   };
 
   const handleOpenPopup = (plan) => {
@@ -189,22 +153,20 @@ const ServiceLevels = ({ isVip = false }) => {
     <section className="service-levels" id="services">
       <div className="service-levels-container">
         <h2 className="service-levels-title scroll-reveal-fade-up" ref={titleRef}>
-          {isVip ? 'Exclusive VIP Plans' : 'Service Plans'}
+          {isVip ? t('serviceLevels.titleVip') : t('serviceLevels.title')}
         </h2>
         <p className="service-levels-subtitle scroll-reveal-fade-up" ref={titleRef}>
-          {isVip
-            ? 'Special pricing for our VIP members'
-            : 'Choose the perfect plan for your vehicle'}
+          {isVip ? t('serviceLevels.subtitleVip') : t('serviceLevels.subtitle')}
         </p>
 
         <div className="plans-table-wrapper scroll-reveal-fade" ref={tableRef} role="region" aria-label="Plans and pricing">
           <table className="plans-table">
             <thead>
               <tr>
-                <th scope="col">Plan</th>
-                <th scope="col">Price</th>
-                <th scope="col">Description</th>
-                <th scope="col">Includes</th>
+                <th scope="col">{t('serviceLevels.plan')}</th>
+                <th scope="col">{t('serviceLevels.price')}</th>
+                <th scope="col">{t('serviceLevels.description')}</th>
+                <th scope="col">{t('serviceLevels.includes')}</th>
                 <th scope="col" aria-label="Action"></th>
               </tr>
             </thead>
@@ -225,18 +187,18 @@ const ServiceLevels = ({ isVip = false }) => {
                 >
                   <td className="plan-name-cell">
                     <div className="plan-name-wrapper">
-                      <span className="plan-name">{plan.name}</span>
-                      {plan.popular && <span className="plan-badge">Most Popular</span>}
+                      <span className="plan-name">{t(plan.nameKey)}</span>
+                      {plan.popular && <span className="plan-badge">{t('serviceLevels.mostPopular')}</span>}
                     </div>
                   </td>
                   <td className="plan-price-cell">{getPrice(plan.id)}</td>
-                  <td className="plan-description-cell">{plan.description}</td>
+                  <td className="plan-description-cell">{t(plan.descKey)}</td>
                   <td className="plan-features-cell">
                     <ul className="plan-features-list">
-                      {plan.features.map((feature) => (
-                        <li key={feature} className="plan-feature-item">
+                      {plan.featKeys.map((key) => (
+                        <li key={key} className="plan-feature-item">
                           <span className="plan-feature-check">✓</span>
-                          <span className="plan-feature-text">{feature}</span>
+                          <span className="plan-feature-text">{t(`serviceLevels.${key}`)}</span>
                         </li>
                       ))}
                     </ul>
@@ -249,7 +211,7 @@ const ServiceLevels = ({ isVip = false }) => {
                         handleSelectPlan(plan);
                       }}
                     >
-                      Select
+                      {t('serviceLevels.select')}
                     </button>
                   </td>
                 </tr>
@@ -272,7 +234,7 @@ const ServiceLevels = ({ isVip = false }) => {
               ×
             </button>
             <div className="info-modal-table-wrapper">
-              <h3 className="comparison-title">Comparación de servicios por paquete:</h3>
+              <h3 className="comparison-title">{t('serviceLevels.comparisonTitle')}</h3>
               <table className="modal-plans-table comparison-table">
                 <thead>
                   <tr>
@@ -338,8 +300,8 @@ const ServiceLevels = ({ isVip = false }) => {
             <div className="info-modal-body">
               {(() => {
                 const info = planInfo[selectedPlan.id] || {
-                  heading: selectedPlan.name,
-                  summary: 'Information available soon.',
+                  heading: t(selectedPlan.nameKey),
+                  summary: t('serviceLevels.infoSoon'),
                   items: [],
                   note: '',
                 };

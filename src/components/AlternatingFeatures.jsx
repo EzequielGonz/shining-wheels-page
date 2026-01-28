@@ -1,7 +1,9 @@
 import React, { useEffect, useRef, useState } from 'react';
+import { useLanguage } from '../context/LanguageContext';
 import './AlternatingFeatures.css';
 
 const AlternatingFeatures = () => {
+  const { t } = useLanguage();
   const blocksRef = useRef([]);
   const [animatedBlocks, setAnimatedBlocks] = useState(new Set());
 
@@ -39,27 +41,19 @@ const AlternatingFeatures = () => {
         <div className="feature-image-container feature-image-left">
           <img src="https://i.ibb.co/v6Bs2Jw4/Whats-App-Image-2026-01-16-at-2-49-36-PM.jpg" alt="Creator" className="feature-image" />
           <div className="feature-image-placeholder">
-            <span>Photo</span>
+            <span>{t('alternating.photo')}</span>
           </div>
         </div>
         <div className="feature-content feature-content-right">
-          <h2 className="feature-title">Who I Am</h2>
-          <p className="feature-intro">
-            Creator of systems. Detailer by craft.
-          </p>
+          <h2 className="feature-title">{t('alternating.whoIAm')}</h2>
+          <p className="feature-intro">{t('alternating.whoIAmIntro')}</p>
+          <p className="feature-text">{t('alternating.whoIAmText1')}</p>
           <p className="feature-text">
-            I believe in first-class service, executed at the highest level
-          </p>
-          <p className="feature-text">
-            I design and execute every service as a system:
+            {t('alternating.whoIAmText2')}
             <br />
-            <span className="feature-highlight">
-              process, technique, timing, and detail working in harmony.
-            </span>
+            <span className="feature-highlight">{t('alternating.whoIAmHighlight')}</span>
           </p>
-          <p className="feature-tagline">
-            Excellence allows no excuses.
-          </p>
+          <p className="feature-tagline">{t('alternating.whoIAmTagline')}</p>
         </div>
       </div>
 
@@ -69,30 +63,20 @@ const AlternatingFeatures = () => {
         className={`feature-block  ${animatedBlocks.has(1) ? 'animated' : ''}`}
       >
         <div className="feature-content feature-content-left">
-          <h2 className="feature-title">Why Us</h2>
+          <h2 className="feature-title">{t('alternating.whyUs')}</h2>
           <p className="feature-text">
-            I use the best products in each category, for every material and surface.
+            {t('alternating.whyUsText1')}
             <br />
-            Selected from the world's leading brands and applied with proven, safe methods.
+            {t('alternating.whyUsText2')}
           </p>
           <ul className="feature-list">
-            <li>Nothing is generic.</li>
-            <li>Every chemical, tool, and technique has a purpose.</li>
+            <li>{t('alternating.whyUsLi1')}</li>
+            <li>{t('alternating.whyUsLi2')}</li>
           </ul>
           <p className="feature-text">
-            <span className="feature-highlight">
-              Top-tier products.
-              <br />
-              World-class procedures.
-              <br />
-              Genuine care — never rushed, never automated.
-            </span>
+            <span className="feature-highlight">{t('alternating.whyUsHighlight')}</span>
           </p>
-          <p className="feature-tagline">
-            Not the cheapest.
-            <br />
-            Simply the best — because true excellence should never be compromised.
-          </p>
+          <p className="feature-tagline">{t('alternating.whyUsTagline')}</p>
         </div>
         <div className="feature-image-container feature-image-right">
           {/* Video 1 - Replace with actual video path */}
@@ -106,13 +90,13 @@ const AlternatingFeatures = () => {
               e.target.style.display = 'none';
               const placeholder = document.createElement('div');
               placeholder.className = 'feature-image-placeholder';
-              placeholder.innerHTML = '<span>Video</span>';
+              placeholder.innerHTML = `<span>${t('alternating.video')}</span>`;
               e.target.parentNode.appendChild(placeholder);
             }}
           >
             <source src="/aaa.mp4" type="video/mp4" />
             <div className="feature-image-placeholder">
-              <span>Video</span>
+              <span>{t('alternating.video')}</span>
             </div>
           </video>
         </div>
@@ -135,38 +119,26 @@ const AlternatingFeatures = () => {
               e.target.style.display = 'none';
               const placeholder = document.createElement('div');
               placeholder.className = 'feature-image-placeholder';
-              placeholder.innerHTML = '<span>Video</span>';
+              placeholder.innerHTML = `<span>${t('alternating.video')}</span>`;
               e.target.parentNode.appendChild(placeholder);
             }}
           >
             <source src="/ccc.mp4" type="video/mp4" />
             <div className="feature-image-placeholder">
-              <span>Video</span>
+              <span>{t('alternating.video')}</span>
             </div>
           </video>
         </div>
         <div className="feature-content feature-content-right">
-          <h2 className="feature-title">FUNDAMENTALS</h2>
+          <h2 className="feature-title">{t('alternating.fundamentals')}</h2>
           <p className="feature-text">
-            The goal is simple: to deliver the best service of your life.
+            {t('alternating.fundamentalsText1')}
             <br />
-            <span className="feature-highlight">No shortcuts. No excuses.</span>
+            <span className="feature-highlight">{t('alternating.fundamentalsHighlight')}</span>
           </p>
-          <p className="feature-text">
-            I don't sell services — I deliver real care.
-            <br />
-            If you trust me with your car, I will never fail you.
-          </p>
-          <p className="feature-text">
-            You'll receive a level of service better than you imagined,
-            <br />
-            because excellence is a responsibility.
-          </p>
-          <p className="feature-tagline">
-            Trust is not taken lightly.
-            <br />
-            And it's never broken.
-          </p>
+          <p className="feature-text">{t('alternating.fundamentalsText2')}</p>
+          <p className="feature-text">{t('alternating.fundamentalsText3')}</p>
+          <p className="feature-tagline">{t('alternating.fundamentalsTagline')}</p>
         </div>
       </div>
     </section>

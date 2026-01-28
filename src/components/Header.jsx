@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { useCart } from '../context/CartContext';
+import { useLanguage } from '../context/LanguageContext';
 import Logo from './Logo';
 import './Header.css';
 
@@ -8,12 +9,11 @@ const Header = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [isLanguageMenuOpen, setIsLanguageMenuOpen] = useState(false);
-  const [selectedLanguage, setSelectedLanguage] = useState('en');
+  const { language, setLanguage, t } = useLanguage();
   const { setIsCartOpen, cartItems } = useCart();
   const navigate = useNavigate();
   const location = useLocation();
 
-  // Detectar si estamos en la página VIP
   const isVipPage = location.pathname === '/vip';
 
   const languages = [
@@ -24,29 +24,23 @@ const Header = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      const isScrolled = window.scrollY > 20;
-      setScrolled(isScrolled);
+      setScrolled(window.scrollY > 20);
     };
-
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Close language menu when clicking outside
   useEffect(() => {
     const handleClickOutside = (e) => {
-      if (!e.target.closest('.language-selector')) {
-        setIsLanguageMenuOpen(false);
-      }
+      if (!e.target.closest('.language-selector')) setIsLanguageMenuOpen(false);
     };
     document.addEventListener('click', handleClickOutside);
     return () => document.removeEventListener('click', handleClickOutside);
   }, []);
 
   const handleLanguageSelect = (langCode) => {
-    setSelectedLanguage(langCode);
+    setLanguage(langCode);
     setIsLanguageMenuOpen(false);
-    // Aquí se implementaría la funcionalidad real de cambio de idioma
   };
 
   const handleHomeClick = (e) => {
@@ -56,7 +50,7 @@ const Header = () => {
     }
   };
 
-  const currentLanguage = languages.find(l => l.code === selectedLanguage);
+  const currentLanguage = languages.find(l => l.code === language);
 
   return (
     <header className={`header ${scrolled ? 'scrolled' : ''}`}>
@@ -65,14 +59,14 @@ const Header = () => {
         <nav className="header-nav header-nav-left">
           {isVipPage ? (
             <>
-              <a href="/" className="nav-link" onClick={handleHomeClick}>Home</a>
-              <a href="#vip-plans" className="nav-link">Services</a>
+              <a href="/" className="nav-link" onClick={handleHomeClick}>{t('header.home')}</a>
+              <a href="#vip-plans" className="nav-link">{t('header.services')}</a>
             </>
           ) : (
             <>
-              <a href="#home" className="nav-link">Home</a>
-              <a href="#services" className="nav-link">Services</a>
-              <a href="#contacto" className="nav-link">Contact</a>
+              <a href="#home" className="nav-link">{t('header.home')}</a>
+              <a href="#services" className="nav-link">{t('header.services')}</a>
+              <a href="#contacto" className="nav-link">{t('header.contact')}</a>
             </>
           )}
         </nav>
@@ -95,15 +89,14 @@ const Header = () => {
             <svg className="crown-icon" viewBox="0 0 24 24" fill="currentColor">
               <path d="M2 7l3 2 7-5 7 5 3-2v10H2V7z" />
             </svg>
-            VIP
+            {t('header.vip')}
           </button>
 
-          {/* Language Selector */}
           <div className="language-selector">
             <button
               className="language-button"
               onClick={() => setIsLanguageMenuOpen(!isLanguageMenuOpen)}
-              aria-label="Change language"
+              aria-label={t('header.changeLanguage')}
             >
               <span className="language-flag">{currentLanguage?.flag}</span>
               <svg className="language-chevron" viewBox="0 0 24 24" fill="currentColor" width="16" height="16">
@@ -116,7 +109,7 @@ const Header = () => {
                 {languages.map((lang) => (
                   <button
                     key={lang.code}
-                    className={`language-option ${selectedLanguage === lang.code ? 'active' : ''}`}
+                    className={`language-option ${language === lang.code ? 'active' : ''}`}
                     onClick={() => handleLanguageSelect(lang.code)}
                   >
                     <span className="language-flag">{lang.flag}</span>
@@ -128,7 +121,7 @@ const Header = () => {
           </div>
 
           <button className="nav-link nv nav-link-utility cart-trigger cart-trigger-dark" onClick={() => setIsCartOpen(true)}>
-            <span>Cart ({cartItems.length})</span>
+            <span>{t('header.cart')} ({cartItems.length})</span>
           </button>
         </div>
 
@@ -149,29 +142,28 @@ const Header = () => {
         <nav className="mobile-menu">
           {isVipPage ? (
             <>
-              <a href="/" className="mobile-nav-link" onClick={handleHomeClick}>Home</a>
-              <a href="#vip-plans" className="mobile-nav-link" onClick={() => setIsMobileMenuOpen(false)}>Services</a>
+              <a href="/" className="mobile-nav-link" onClick={handleHomeClick}>{t('header.home')}</a>
+              <a href="#vip-plans" className="mobile-nav-link" onClick={() => setIsMobileMenuOpen(false)}>{t('header.services')}</a>
             </>
           ) : (
             <>
-              <a href="#home" className="mobile-nav-link" onClick={() => setIsMobileMenuOpen(false)}>Home</a>
-              <a href="#services" className="mobile-nav-link" onClick={() => setIsMobileMenuOpen(false)}>Services</a>
-              <a href="#contacto" className="mobile-nav-link" onClick={() => setIsMobileMenuOpen(false)}>Contact</a>
+              <a href="#home" className="mobile-nav-link" onClick={() => setIsMobileMenuOpen(false)}>{t('header.home')}</a>
+              <a href="#services" className="mobile-nav-link" onClick={() => setIsMobileMenuOpen(false)}>{t('header.services')}</a>
+              <a href="#contacto" className="mobile-nav-link" onClick={() => setIsMobileMenuOpen(false)}>{t('header.contact')}</a>
             </>
           )}
           <button className="mobile-nav-link" onClick={() => { setIsCartOpen(true); setIsMobileMenuOpen(false); }}>
-            Cart ({cartItems.length})
+            {t('header.cart')} ({cartItems.length})
           </button>
 
-          {/* Language selector for mobile */}
           <div className="mobile-language-selector">
-            <span className="mobile-language-label">Language:</span>
+            <span className="mobile-language-label">{t('header.language')}:</span>
             <div className="mobile-language-options">
               {languages.map((lang) => (
                 <button
                   key={lang.code}
-                  className={`mobile-language-btn ${selectedLanguage === lang.code ? 'active' : ''}`}
-                  onClick={() => setSelectedLanguage(lang.code)}
+                  className={`mobile-language-btn ${language === lang.code ? 'active' : ''}`}
+                  onClick={() => { handleLanguageSelect(lang.code); setIsMobileMenuOpen(false); }}
                 >
                   <span>{lang.flag}</span>
                 </button>
@@ -183,7 +175,7 @@ const Header = () => {
             <svg className="crown-icon" viewBox="0 0 24 24" fill="currentColor">
               <path d="M2 7l3 2 7-5 7 5 3-2v10H2V7z" />
             </svg>
-            VIP
+            {t('header.vip')}
           </button>
         </nav>
       )}
